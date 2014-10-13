@@ -4,7 +4,7 @@
 
 Programming
 ---
-• Advanced knowledge of <b>Java</b>, C, Perl, HTML<br>
+• Advanced knowledge of <b>Java</b>, C, <b>Perl</b>, HTML<br>
 • Good knowledge of C++, C#, Python, <b>PigLatin</b><br>
 • Basics of <b>PHP</b>, <b>jQuery</b>, JavaScript, CSS, Matlab<br>
 
@@ -13,7 +13,7 @@ Skills
 • Advanced algorithms and data structures<br>
 • Operating systems (Mac OS, Linux)<br>
 • Distributed computing (Apache Hadoop, Apache Pig)<br>
-• I know: Git, Eclipse, Sublime, Svn. 
+• I know: Git, Eclipse, Sublime, Svn. (and many other tools too)
 
 
 University projects
