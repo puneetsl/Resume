@@ -6,13 +6,14 @@ Programming
 ---
 • Advanced knowledge of <b>Java</b>, C, Perl, HTML<br>
 • Good knowledge of C++, C#, Python, <b>PigLatin</b><br>
-• Basics of PHP, jQuery, JavaScript, CSS, Matlab<br>
+• Basics of <b>PHP</b>, <b>jQuery</b>, JavaScript, CSS, Matlab<br>
 
 Skills
 ---
 • Advanced algorithms and data structures<br>
 • Operating systems (Mac OS, Linux)<br>
 • Distributed computing (Apache Hadoop, Apache Pig)<br>
+• I know: Git, Eclipse, Sublime, Svn. 
 
 
 University projects
@@ -35,7 +36,7 @@ Personal projects
 Conferences and Publications
 ---
 • Puneet Singh et al.,“<a href="http://ijcsi.org/papers/7-4-2-11-17.pdf">Architecture for Automated Tagging and Clustering of Song Files According to Mood</a>”, IJCSI, 2010<br>
-• Puneet Singh et al., “PSLOS: Command Line Interpreter and Virtual File System”, ICCC, 2008.
+• Puneet Singh et al., “PSLFS: Command Line Interpreter and Virtual File System”, ICCC, 2008.
 
 Experience
 ---
@@ -61,4 +62,5 @@ Research Interests
 Contact
 ---
 "pludu [at] buffalo.edu" | +1-(716) TOP-HEGG | <a href="http://www.puneetsingh.me">My personal website</a>
+
 
