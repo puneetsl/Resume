@@ -1,3 +1,4 @@
+// http://ideone.com/1SmxBB See how it runs on ideone 
 #include <stdio.h>
 #include <string.h>
 #define XXqwqPN printf("\n") 
