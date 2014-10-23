@@ -37,7 +37,6 @@ Conferences and Publications
 ---
 • Puneet Singh et al.,"<a href="http://ijcsi.org/papers/7-4-2-11-17.pdf">Architecture for Automated Tagging and Clustering of Song Files According to Mood</a>", IJCSI, 2010<br>
 • Puneet Singh, "<a href="http://xxx.tau.ac.il/pdf/1405.6667v1.pdf">Inferring gender of a Twitter user using celebrities it follows</a>", CSE Dept, University at Buffalo, 2014
-
 • Puneet Singh et al., "PSLFS: Command Line Interpreter and Virtual File System", ICCC, 2008.
 
 Experience
