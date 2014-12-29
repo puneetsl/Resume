@@ -1,4 +1,4 @@
-<a href="http://www.puneetsingh.info">Puneet Singh Ludu</a>
+<a href="http://www.puneetsingh.me">Puneet Singh Ludu</a>
 ================
 
 
@@ -13,7 +13,7 @@ Skills
 • Advanced algorithms and data structures<br>
 • Operating systems (Mac OS, Linux)<br>
 • Distributed computing (Apache Hadoop, Apache Pig)<br>
-• I know: Git, Eclipse, Sublime, Svn. (and many other tools too)
+• I know: Git, Eclipse, Sublime, Svn. (and many other tools too)<br>
 
 
 University projects
