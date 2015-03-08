@@ -31,6 +31,7 @@ Personal projects
 * HappyOrSad - Perl script to know mood of text and lyrics (https://github.com/puneetsl/HappyOrSad)<br>
 * ShortCleaner - A JAVA library to clean tweets for consuming it for various kinds of analytics. <br>
 * jTextBrew - A JAVA library for fuzzy string matching, based on TextBrew algorithm by Chris Brew.
+* Reviewed 5 chapters of "Apache Solr Essentials" (http://goo.gl/Q7h3mW)
 
 Conferences and Publications
 ---
