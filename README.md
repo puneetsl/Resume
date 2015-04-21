@@ -41,8 +41,10 @@ Conferences and Publications
 
 Experience
 ---
+<b>NLP Engineer</b>, April 2015  -  Present, Factset Research Systems – New York City<br>
+
 <b>Research Engineer</b>, July 2011  -  July 2013, Innovation Labs, TATA Consultancy Services – Delhi<br>
-<u><i>Time Series Analysis on Big Data :</i></u> (Technology and Tools used: Java, Python, Perl, Shell Scripts, Rapidminer) <br>
+<i><u>Time Series Analysis on Big Data</u> :</i> (Technology and Tools used: Java, Python, Perl, Shell Scripts, Rapidminer) <br>
 * Worked on a research project involving multivariate time series analysis of car sensor data.<br>
 * Devised an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.<br>
 <u><i>Data Harmonization Framework (DHF)</i></u> :   (Technology and Tools used: Java, Apache Pig, XML) <br>
