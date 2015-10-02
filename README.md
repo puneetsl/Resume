@@ -11,7 +11,7 @@ Skills
 ---
 * Advanced algorithms and data structures<br>
 * Operating systems (Mac OS, Linux)<br>
-* Distributed computing (Apache Hadoop, Apache Pig)<br>
+* Distributed computing (Apache Hadoop, Apache Pig, Apache Spark, PredictionIO)<br>
 * I know: Git, Eclipse, Sublime, Svn. (and many other tools too)<br>
 
 
@@ -26,6 +26,7 @@ University projects
 
 Personal projects
 ---
+* [Memodiction](https://play.google.com/store/apps/details?id=me.puneetsingh.learn1) - An Android app that lets you learn and revise words to build your vocabulary intelligently
 * Co-founded <a href="http://www.gridbits.com">Gridbits</a>, a services and products company that makes Android, iOS and web applications. Hyroo.in is the first product that helps the costumers rent cars online in India.<br>
 * <a href="http://tweetiments.com">Tweetiments.com</a> - Sentiment Analysis of Twitter data (Perl, PHP)<br>
 * HappyOrSad - Perl script to know mood of text and lyrics (https://github.com/puneetsl/HappyOrSad)<br>
@@ -35,13 +36,21 @@ Personal projects
 
 Conferences and Publications
 ---
-* Puneet Singh et al.,"<a href="http://ijcsi.org/papers/7-4-2-11-17.pdf">Architecture for Automated Tagging and Clustering of Song Files According to Mood</a>", IJCSI, 2010<br>
-* Puneet Singh, "<a href="http://xxx.tau.ac.il/pdf/1405.6667v1.pdf">Inferring gender of a Twitter user using celebrities it follows</a>", CSE Dept, University at Buffalo, 2014<br>
-* Puneet Singh et al., "PSLFS: Command Line Interpreter and Virtual File System", ICCC, 2008.
+* "[Inferring latent attributes of an Indian Twitter user using celebrities and class influencers](http://dl.acm.org/citation.cfm?id=2806657&preflayout=tabs)", ACM Hypertext 2015
+* "<a href="http://ijcsi.org/papers/7-4-2-11-17.pdf">Architecture for Automated Tagging and Clustering of Song Files According to Mood</a>", IJCSI, 2010<br>
+* "<a href="http://xxx.tau.ac.il/pdf/1405.6667v1.pdf">Inferring gender of a Twitter user using celebrities it follows</a>", CSE Dept, University at Buffalo, 2014<br>
+* "PSLFS: Command Line Interpreter and Virtual File System", ICCC, 2008.
 
 Experience
 ---
 <b>NLP Engineer</b>, April 2015  -  Present, Factset Research Systems – New York City<br>
+- Duplicate document identification (Java, Shell Scripts)
+  - Used Shingling and Vector Space Model algorithms to detect duplicate documents from a stream of documents.
+- Statistical Machine Translation (Moses, Python)
+  - Building a language translation engine similar to google translate, for Polish, based on principles of statistical machine translation.
+  - The cleaning, tokenization, stemming and other language processing is done by using nltk and other NLP libraries in python.
+- Earning and Stock Correlation using Social Media Sentiments (Python, Java, PredictionIO)
+  - Exploratory project to find correlation between social media sentiments with earnings and stocks of a company.
 
 <b>Research Engineer</b>, July 2011  -  July 2013, Innovation Labs, TATA Consultancy Services – Delhi<br>
 <i><u>Time Series Analysis on Big Data</u> :</i> (Technology and Tools used: Java, Python, Perl, Shell Scripts, Rapidminer) <br>
