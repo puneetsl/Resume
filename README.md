@@ -3,16 +3,15 @@
 
 Programming
 ---
-* Advanced knowledge of <b>Java</b>, C, <b>Perl</b>, HTML<br>
-* Good knowledge of C++, C#, Python, <b>PigLatin</b><br>
-* Basics of <b>PHP</b>, <b>jQuery</b>, JavaScript, CSS, Matlab<br>
+* Advanced knowledge of __Java__, C, __Perl__, HTML<br>
+* Good knowledge of C++, C#, Python, __PigLatin__<br>
+* Basics of __PHP__, __jQuery__, JavaScript, CSS, Matlab<br>
 
 Skills
 ---
 * Advanced algorithms and data structures<br>
-* Operating systems (Mac OS, Linux)<br>
 * Distributed computing (Apache Hadoop, Apache Pig, Apache Spark, PredictionIO)<br>
-* I know: Git, Eclipse, Sublime, Svn. (and many other tools too)<br>
+* I know: Git, Eclipse, Sublime, Svn. (and many other tools)<br>
 
 
 University projects
@@ -27,7 +26,6 @@ University projects
 Personal projects
 ---
 * [Memodiction](https://play.google.com/store/apps/details?id=me.puneetsingh.learn1) - An Android app that lets you learn and revise words to build your vocabulary intelligently
-* Co-founded <a href="http://www.gridbits.com">Gridbits</a>, a services and products company that makes Android, iOS and web applications. Hyroo.in is the first product that helps the costumers rent cars online in India.<br>
 * <a href="http://tweetiments.com">Tweetiments.com</a> - Sentiment Analysis of Twitter data (Perl, PHP)<br>
 * HappyOrSad - Perl script to know mood of text and lyrics (https://github.com/puneetsl/HappyOrSad)<br>
 * ShortCleaner - A JAVA library to clean tweets for consuming it for various kinds of analytics. <br>
@@ -44,25 +42,24 @@ Conferences and Publications
 Experience
 ---
 <b>NLP Engineer</b>, April 2015  -  Present, Factset Research Systems – New York City<br>
-- Duplicate document identification (Java, Shell Scripts)
+- Duplicate document identification _(Java, Shell Scripts)_
   - Used Shingling and Vector Space Model algorithms to detect duplicate documents from a stream of documents.
-- Statistical Machine Translation (Moses, Python)
+- Statistical Machine Translation _(Moses, Python)_
   - Building a language translation engine similar to google translate, for Polish, based on principles of statistical machine translation.
   - The cleaning, tokenization, stemming and other language processing is done by using nltk and other NLP libraries in python.
-- Earning and Stock Correlation using Social Media Sentiments (Python, Java, PredictionIO)
+- Earning and Stock Correlation using Social Media Sentiments _(Python, Java, PredictionIO)_
   - Exploratory project to find correlation between social media sentiments with earnings and stocks of a company.
 
 <b>Research Engineer</b>, July 2011  -  July 2013, Innovation Labs, TATA Consultancy Services – Delhi<br>
-<i><u>Time Series Analysis on Big Data</u> :</i> (Technology and Tools used: Java, Python, Perl, Shell Scripts, Rapidminer) <br>
-* Worked on a research project involving multivariate time series analysis of car sensor data.<br>
-* Devised an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.<br>
-
-<i><u>Data Harmonization Framework (DHF)</u></i> :   (Technology and Tools used: Java, Apache Pig, XML) <br>
-* Implemented an ETL framework that exploits power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.<br>
+- Time Series Analysis on Big Data : _(Technology and Tools used: Java, Python, Perl, Shell Scripts, Rapidminer)_ <br>
+  * Worked on a research project involving multivariate time series analysis of car sensor data.<br>
+  * Devised an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.<br>
+- Data Harmonization Framework (DHF) :   _(Technology and Tools used: Java, Apache Pig, XML)_ <br>
+  * Implemented an ETL framework that exploits power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.<br>
 
 <b>Developer</b>, December 2010  -  June 2011,ILP training centre, TATA Consultancy Services – Trivandrum<br>
-* Trainee Evaluation System: Lead team of two, into the development of 'Trainee Evaluation System' as a part of Moodle plugin, deployed in TCS Trivandrum training centre. (PHP, MySql, jQuery)<br>
-* Resource planning and Scheduling system: Developed solution for managing infrastructure resources and scheduling lectures. (PHP, MySql)<br>
+* Trainee Evaluation System: Lead team of two, into the development of 'Trainee Evaluation System' as a part of Moodle plugin, deployed in TCS Trivandrum training centre. _(PHP, MySql, jQuery)_<br>
+* Resource planning and Scheduling system: Developed solution for managing infrastructure resources and scheduling lectures. _(PHP, MySql)_<br>
 
 Education
 ---
