@@ -44,10 +44,10 @@ jobs:
               MINOR=$(echo $LATEST_VERSION | cut -d. -f2)
               
               # Increment minor version by 2
-              NEW_MINOR=$((MINOR + 2))
+              NEW_MINOR=$((MINOR + 1))
               
-              # If minor version exceeds 8, increment major and reset minor to 0
-              if [ $NEW_MINOR -gt 8 ]; then
+              # If minor version exceeds 9, increment major and reset minor to 0
+              if [ $NEW_MINOR -gt 9 ]; then
                 NEW_MAJOR=$((MAJOR + 1))
                 NEW_MINOR=0
               else
@@ -73,9 +73,18 @@ jobs:
           # Also copy to root as latest version
           cp resume.pdf "puneet_ludu_resume_latest.pdf"
 
-      - name: Convert LaTeX to Markdown
+      - name: Convert PDF to Markdown
         run: |
-          pandoc -s resume.tex -o resume.md
+          # Convert PDF to Markdown using pandoc
+          pandoc -s resume.pdf -o resume.md
+
+          # Obfuscate email addresses
+          sed -i -E 's/([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/\1 [at] \2/g' resume.md
+          sed -i -E 's/([a-zA-Z0-9._%+-]+)\.([a-zA-Z0-9._%+-]+)/\1 [dot] \2/g' resume.md
+
+          # Obfuscate phone numbers (various formats)
+          sed -i -E 's/(\+?[0-9][0-9\s\-\(\)\.]+[0-9])/[Phone Number]/g' resume.md
+          sed -i -E 's/(\([0-9]{3}\)\s*[0-9]{3}-[0-9]{4})/[Phone Number]/g' resume.md
 
       - name: Create README.md with Markdown content and PDF link
         run: |
