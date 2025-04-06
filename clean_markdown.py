@@ -1,8 +1,8 @@
 import os
-import openai
+from openai import OpenAI
 
 # Set OpenAI API key from GitHub Actions secret
-openai.api_key = os.environ.get("GH_KEY")
+client = OpenAI(api_key=os.environ.get("GH_KEY"))
 
 # Read the raw markdown
 with open("resume_raw.md", "r") as f:
@@ -23,7 +23,7 @@ Here's the raw markdown:
 """
 
 # Call OpenAI API
-response = openai.ChatCompletion.create(
+response = client.chat.completions.create(
     model="gpt-4",
     messages=[
         {
