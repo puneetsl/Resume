@@ -17,6 +17,12 @@ Please clean up this LaTeX-to-Markdown converted resume.
 4. Remove any LaTeX artifacts or weird formatting
 5. Keep the content exactly the same, just improve the formatting
 
+IMPORTANT: Please obfuscate sensitive information in the following way:
+- Replace email addresses with the format: username [dot] domain [at] tld
+  Example: john.doe@gmail.com → john [dot] doe [at] gmail [dot] com
+- Replace phone numbers with obfuscation like 
+  Example: +1-(123) 456-7890 → +1-(123) four five six seven eight nine zero
+
 Here's the raw markdown:
 
 {raw_markdown}
@@ -30,7 +36,7 @@ response = client.chat.completions.create(
             "role": "system",
             "content": (
                 "You are a helpful assistant that converts LaTeX resumes "
-                "to clean Markdown format."
+                "to clean Markdown format and obfuscates sensitive info."
             ),
         },
         {"role": "user", "content": prompt},
