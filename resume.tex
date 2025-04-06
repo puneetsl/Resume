@@ -1,0 +1,325 @@
+% Improved Modern Resume Template for Puneet Ludu
+% Class and package configuration
+\documentclass[11pt,letterpaper,sans]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{ragged2e}
+
+% Set page margins - UPDATED: reduced margins to use more horizontal space
+\geometry{left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
+
+% Define colors
+\definecolor{namecolor}{RGB}{50, 50, 50}
+\definecolor{sectioncolor}{RGB}{30, 30, 30}
+\definecolor{linkcolor}{RGB}{0, 0, 200}
+\definecolor{impactcolor}{RGB}{70, 70, 70}
+\definecolor{yearcolor}{RGB}{120, 120, 120}
+\definecolor{sectionbg}{RGB}{245, 245, 245}
+
+% Configure hyperref
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkcolor,
+    pdftitle={Puneet Ludu Resume},
+    pdfauthor={Puneet Ludu},
+}
+
+% Remove page numbers
+\pagenumbering{gobble}
+
+% Set paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% Custom font size commands
+\newcommand{\normalsizesection}{\normalsize}
+\newcommand{\smallersection}{\small}
+\newcommand{\smallestsection}{\footnotesize}
+\newcommand{\tinyfootnote}{\fontsize{8.5pt}{8.5pt}\selectfont} % Custom size between footnotesize and scriptsize
+
+% Configure section formatting with colored box
+\titleformat{\section}
+    {\Large\bfseries\color{sectioncolor}}
+    {}
+    {0em}
+    {}
+    
+\titlespacing{\section}{0pt}{8pt}{2pt}
+
+% Custom section with background
+\newcommand{\sectionbox}[1]{%
+    \vspace{0.2em}
+    \begin{tcolorbox}[
+        colback=sectionbg,
+        colframe=sectionbg,
+        width=\textwidth,
+        left=5pt,
+        right=5pt,
+        top=2pt,
+        bottom=2pt,
+        boxrule=0pt,
+        arc=0pt,
+        boxsep=0pt,
+    ]
+    \section*{#1}
+    \end{tcolorbox}
+    \vspace{-0.3em}
+}
+
+% Custom commands
+\newcommand{\yearsright}[1]{{\footnotesize\bfseries\color{yearcolor} #1}}
+\newcommand{\impact}[1]{\textit{Impact: #1}}
+\newcommand{\tech}[1]{\textit{(#1)}}
+\newcommand{\approach}[1]{[#1]}
+\newcommand{\entryspace}{\vspace{-1pt}}
+
+% Custom environment for resume entries with hierarchical structure
+\newenvironment{resumeentry}[5]{%
+    \noindent\textbf{#1}\if\relax\detokenize{#1}\relax\else, \fi%
+    \if\relax\detokenize{#2}\relax\else\textit{#2}, \fi%
+    \if\relax\detokenize{#3}\relax\else\textbf{#3}, \fi%
+    \if\relax\detokenize{#4}\relax\else#4\fi%
+    \if\relax\detokenize{#5}\relax\else\hfill\yearsright{#5}\fi\\[-2pt]
+}{\vspace{-1pt}}
+
+% Project entry with indentation and hierarchical structure
+\newenvironment{projectentry}{%
+    \leftskip=0.5cm
+    \par\noindent
+}{\par\leftskip=0cm\vspace{-2pt}}
+
+% Project description with deeper indentation
+\newenvironment{projectdesc}{%
+    \leftskip=1.0cm
+    \footnotesize
+    \par\noindent
+}{\par\leftskip=0cm\smallersection\vspace{-3pt}}
+
+% Link with icon
+\newcommand{\iconlink}[3]{%
+    #1~\href{#2}{#3}%
+}
+
+% Project icon - new command for project icons
+\newcommand{\projicon}[1]{%
+    {\small\color{gray!70}#1}~%
+}
+
+% Begin document
+\begin{document}
+
+% Header with side-by-side layout
+\begin{minipage}[t]{0.6\textwidth}
+    \vspace{0pt}
+    \fontsize{24pt}{28pt}\selectfont\textbf{\color{namecolor}Puneet Ludu}\\[8pt]
+    \footnotesize puneet.ludu@gmail.com | New York, NY | +1-(716) 867-4344 | \href{https://puneet.io}{puneet.io}
+\end{minipage}%
+\begin{minipage}[t]{0.4\textwidth}
+    \vspace{0pt}
+    \raggedright
+    \footnotesize\iconlink{\faGithub}{https://github.com/puneetsl}{https://github.com/puneetsl}\\
+    \footnotesize\iconlink{\faLinkedin}{https://www.linkedin.com/in/puneetsl}{https://www.linkedin.com/in/puneetsl}\\
+    \footnotesize\iconlink{\faDatabase}{https://www.kaggle.com/puneetsl}{https://www.kaggle.com/puneetsl}
+\end{minipage}
+
+\vspace{0mm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0mm}
+
+% Experience section
+\sectionbox{Experience \hfill \normalsize 11 years}
+\smallersection
+
+\begin{resumeentry}{Machine Learning Engineer}{Sep 2021 -- Present}{Zillow (Zestimate)}{Remote}{3Y}
+\end{resumeentry}
+
+\begin{projectentry}
+    \projicon{\faChartLine} \textbf{Interactive CMA \& Realtime Valuation} \tech{Django, DocumentDB, PyTorch} \approach{Siamese Neural Network}
+\end{projectentry}
+
+\begin{projectdesc}
+    Architected and led the end-to-end development of an interactive \textit{Comparative Market Analysis} (CMA) platform with Realtime Valuations, Property Embeddings and Comps API, providing agents and buyers with data-driven tools to support home pricing, enhancing client decision-making and driving potential revenue through valuation services.\\[1pt]
+    \impact{0 to 1 project to boost engagement and satisfaction, paving the way for \textbf{new revenue streams}}
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faServer} \textbf{Zestimate Infrastructure Modernization} \tech{Python, Terraform, AWS, Kubeflow, Metaflow, Docker, Gitlab CI}
+\end{projectentry}
+
+\begin{projectdesc}
+    Led the modernization of a critical valuation ML infrastructure, transitioning to more cost-effective, containerized technologies, resulting in substantial annual cost savings and enhanced system scalability.\\[1pt]
+    \impact{Achieved operational improvements and annual cost savings of \$500k.}
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faCode} \textbf{Technical Innovation \& Team Collaboration}
+\end{projectentry}
+
+\begin{projectdesc}
+    Integrated advanced machine learning tools into team workflows and established coding standards, significantly enhancing collaboration and experiment tracking capabilities. Contributed to open-source projects.\\[1pt]
+    \impact{Improved overall team efficiency, code quality. Reduced On-Call alerts by \textbf{95\%}}
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faUsers} \textbf{Leadership \& Mentorship}
+\end{projectentry}
+
+\begin{projectdesc}
+    Managed interns and Mentored new hire, fostering technical skill development and guiding them through project contributions.
+\end{projectdesc}
+
+\begin{resumeentry}{Machine Learning Engineer}{May 2020 - Sep 2021}{OkCupid (Match.com)}{New York City}{1.5Y}
+\end{resumeentry}
+
+\begin{projectentry}
+    \projicon{\faSort} \textbf{Discount Optimization} \tech{Python, Keras, TensorFlow, Weights and Biases} \approach{\href{https://blog.research.google/2016/06/wide-deep-learning-better-together-with.html}{Wide\&Deep}}
+\end{projectentry}
+
+\begin{projectdesc}
+    Lead the efforts to optimize subscription pricing(discounts) to maximize the revenue for OKCupid, Implemented end-to-end ML pipelines, feature engineering, modelling, alerting etc.\\[1pt]
+    \impact{Increased overall revenue by \textbf{6\%} through A/B testing against assigned prices}
+\end{projectdesc}
+
+\begin{resumeentry}{Machine Learning Engineer}{Apr 2015 - May 2020}{FactSet}{New York City}{5Y}
+\end{resumeentry}
+
+\begin{projectentry}
+    \projicon{\faMicrophone} \textbf{Earning Call Speaker Identification} \tech{Python, TensorFlow, Keras} \approach{Spectrograms, CNN} [\href{https://drive.google.com/file/d/1nF485POZoE2YsYuQHdvUHO1GbwkQUDfL/view}{{\faFile} Presentation}]
+\end{projectentry}
+
+\begin{projectdesc}
+    Developed and deployed an end-to-end speaker identification system to identify speakers in real-time during company quarterly earnings calls using computer vision and deep neural networks.\\[1pt]
+    \impact{In early testing it was estimated to save around \textbf{20\%} human-hours}
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faSearch} \textbf{Private-company fact extraction} \tech{Python, Keras, Sagemaker, DataBricks} \approach{ELMo, BiLSTM, Blazingtext}
+\end{projectentry}
+
+\begin{projectdesc}
+    Lead the efforts to extract 'full company name' with key-people, their titles and biographies etc. from 1.6 million crawled and cached websites of private companies.
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faCopy} \textbf{Fuzzy Duplicate Document Identification Service} \tech{Java, Couchbase} \approach{Shingling, Vector Space Models}
+\end{projectentry}
+
+\begin{projectdesc}
+    Developed full-stack solution to identify the duplicate documents in real time, given a stream of thousands of documents per day\\[1pt]
+    \impact{\textbf{66\%} reduction in compute time for document processing. Also, used by \textbf{StreetAccount} to find trending news.}
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faKeyboard} \textbf{Type-Ahead and Query expansion} \tech{Apache Spark, Java, Python} \approach{Distributed Trie, LogisticRegression}
+\end{projectentry}
+
+\begin{projectdesc}
+    Lead developer for implementing features like Autocomplete Query(Type Ahead) and suggest similar concepts to expand the formulated query for a 'Financial Document Search Engine'
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faSort} \textbf{Realtime Formula Ranking} \tech{Apache Spark, Python} \approach{N-gram Language models}
+\end{projectentry}
+
+\begin{projectdesc}
+    Developed the pipeline to cluster users and rank the formulas in the feature of FactSet terminal\\[1pt]
+    \impact{Average rank brought down from \textbf{5.6(ElasticSearch based)} to \textbf{2.3(Language Model based)}}
+\end{projectdesc}
+
+\begin{resumeentry}{ML Research Engineer}{July 2011 - July 2013}{\href{https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre}{Tata Research Development and Design Centre}}{India}{2Y}
+\end{resumeentry}
+
+\begin{projectentry}
+    \projicon{\faChartLine} \textbf{Event Detection in Time Series} \tech{Java, Python, RapidMiner} \approach{SVM - RBF} \href{http://arxiv.org/pdf/1408.3733v1.pdf}{\faFilePdf}
+\end{projectentry}
+
+\begin{projectdesc}
+    Wrote an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with \textbf{7\%} better results in the particular domain of car sensors.
+\end{projectdesc}
+
+\begin{projectentry}
+    \projicon{\faDatabase} \textbf{\href{https://ieeexplore.ieee.org/abstract/document/6597127}{Data Harmonization Framework (DHF)}} \tech{Java, Apache Pig}
+\end{projectentry}
+
+\begin{projectdesc}
+    Implemented an ETL framework that exploits the power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.
+\end{projectdesc}
+
+\normalsizesection
+
+\vspace{30pt} % Add vertical space to push Skills section to next page
+
+% Skills section
+\sectionbox{Skills}
+\smallersection
+
+\noindent\textbf{Languages} \hspace{2mm} Python • Java • C/C++ • Bash • Javascript • HTML • SQL
+
+\vspace{1pt}
+\noindent\textbf{Frameworks} \hspace{0.5mm} PySpark • Keras • Metaflow • KubeFlow • TensorFlow • PyTorch • MongoDB • FastAPI • Django
+
+\normalsizesection
+
+% Publications section
+\sectionbox{Publications \hfill \normalsize\iconlink{\faGraduationCap}{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar profile}}
+\tinyfootnote % Custom size between footnotesize and scriptsize
+
+\noindent\textbf{\href{http://dl.acm.org/citation.cfm?id=2806657}{Inferring Latent Attributes of an Indian Twitter user using Celebrities and Class Influencers}} \hfill \href{https://www.youtube.com/watch?v=9BtWs3Rn2Ng}{\faYoutube} ACM Hypertext 2015
+
+\vspace{-1pt}
+\noindent\textbf{\href{http://arxiv.org/abs/1405.6667}{Inferring gender of a Twitter user using celebrities it follows}} \hfill CORR 2014
+
+\vspace{-1pt}
+\noindent\textbf{\href{http://arxiv.org/abs/1206.2484}{Architecture for Automated Tagging and Clustering of Song Files According to Mood}} \hfill IJCSI, 2010
+
+\normalsizesection
+
+% Education section
+\sectionbox{Education}
+\smallersection
+
+\noindent\textbf{Master of Science} in Computer Science, State University of New York, Buffalo, NY \hfill 2014
+
+\vspace{-1pt}
+\noindent\textbf{B. Tech.} in Computer Science and Engineering, JIIT, India \hfill 2010
+
+\normalsizesection
+
+% Personal Projects section
+\sectionbox{Personal Projects / Extra Curricular}
+\smallersection
+
+\begingroup
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+\textbf{\iconlink{\faUsers}{https://sites.google.com/view/w-mufin/organizers}{Organizer @ MUFin}} & Committee member, organizer and reviewer to the MUFin Workshop at top conferences, focusing on innovative approaches to modeling uncertainty in the financial sector \textit{(AAAI2023, PKDD2022)} \\[3pt]
+
+\textbf{\iconlink{\faFile}{https://resume.precruit.ai/}{Resume Analyzer}} & Resume analysis tool that uses OpenAI's API to improve resume and prepare an impactful introduction script \\[3pt]
+
+\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/lotion}{Lotion}} & Unofficial Notion.so Desktop app for Linux \textit{(2K+ GitHub stars / 60K+ Clones \& Downloads)} \\[3pt]
+
+\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/Romadeva}{Romadeva}} & Tool to convert Roman script to Indic(Devanagari) script \textit{(Used by https://translatorswithoutborders.org)} \\[3pt]
+
+\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/jtextbrew}{jTextBrew}} & A JAVA library for fuzzy string matching, based on TextBrew algorithm by Chris Brew \\[3pt]
+
+\textbf{\iconlink{\faQuestionCircle}{https://www.facebook.com/photo}{Quena}} & Question and Answering system – Indexed 1.6 Million Wikipedia documents, designed a question parser and a ranking algorithm based on popularity. \textit{(Apache Solr, NER, POS tagger)}
+\end{tabularx}
+\endgroup
+
+\normalsizesection
+
+\end{document} 

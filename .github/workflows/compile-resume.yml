@@ -1,0 +1,61 @@
+name: Compile Resume
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version number (e.g., 1.0)"
+        required: true
+        default: "1.0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up TeX Live
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: false
+
+      - name: Get version number
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          else
+            # Extract version from git tag if available, otherwise use 1.0
+            VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "1.0")
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+          fi
+
+      - name: Rename PDF with version
+        run: |
+          mkdir -p releases
+          cp resume.pdf "releases/puneet_ludu_v${{ env.VERSION }}.pdf"
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf
+          path: releases/puneet_ludu_v${{ env.VERSION }}.pdf
+          retention-days: 30
+
+      - name: Create Release
+        if: github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: releases/puneet_ludu_v${{ env.VERSION }}.pdf
+          tag_name: v${{ env.VERSION }}
+          name: Resume v${{ env.VERSION }}
+          body: |
+            Resume version ${{ env.VERSION }}
+
+            Automatically compiled from the LaTeX source.
+          draft: false
+          prerelease: false
