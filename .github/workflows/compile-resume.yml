@@ -93,13 +93,10 @@ jobs:
           cat > README.md << EOF
           # $NAME's Resume
 
-          ## Latest Version: v${{ env.VERSION }}
-
-          ## PDF Version
-
+          ##### Latest Version: v${{ env.VERSION }} 
           [![Resume PDF](https://img.shields.io/badge/Resume-PDF-blue.svg)](puneet_ludu_resume_latest.pdf)
 
-          ## Markdown Version
+          ## Resume in Markdown
 
           $(cat resume.md)
 

@@ -1,6 +1,6 @@
 % Improved Modern Resume Template for Puneet Ludu
 % Class and package configuration
-\documentclass[11pt,letterpaper,sans]{article}
+\documentclass[11pt,letterpaper]{article}
 
 % Packages
 \usepackage[utf8]{inputenc}
@@ -17,6 +17,9 @@
 \usepackage{tikz}
 \usepackage{tcolorbox}
 \usepackage{ragged2e}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
+\pgfplotsset{compat=1.16}
 
 % Set page margins - UPDATED: reduced margins to use more horizontal space
 \geometry{left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
@@ -28,6 +31,15 @@
 \definecolor{impactcolor}{RGB}{70, 70, 70}
 \definecolor{yearcolor}{RGB}{120, 120, 120}
 \definecolor{sectionbg}{RGB}{245, 245, 245}
+
+% Chart colors
+\definecolor{chartblue}{RGB}{54, 162, 235}      % Architecture
+\definecolor{chartyellow}{RGB}{255, 206, 86}    % MLOps
+\definecolor{chartorange}{RGB}{255, 159, 64}    % Leadership
+\definecolor{chartgreen}{RGB}{138, 194, 74}     % Prompt Engineering
+\definecolor{chartred}{RGB}{255, 99, 132}       % Coding
+\definecolor{chartpurple}{RGB}{153, 102, 255}   % Modeling
+\definecolor{chartteal}{RGB}{75, 192, 192}      % Data Eng.
 
 % Configure hyperref
 \hypersetup{
@@ -48,7 +60,7 @@
 \newcommand{\normalsizesection}{\normalsize}
 \newcommand{\smallersection}{\small}
 \newcommand{\smallestsection}{\footnotesize}
-\newcommand{\tinyfootnote}{\fontsize{8.5pt}{8.5pt}\selectfont} % Custom size between footnotesize and scriptsize
+\newcommand{\tinyfootnote}{\fontsize{8pt}{9pt}\selectfont} % Changed from 8.5pt to 8pt
 
 % Configure section formatting with colored box
 \titleformat{\section}
@@ -143,7 +155,7 @@
 \sectionbox{Experience \hfill \normalsize 11 years}
 \smallersection
 
-\begin{resumeentry}{Machine Learning Engineer}{Sep 2021 -- Present}{Zillow (Zestimate)}{Remote}{3Y}
+\begin{resumeentry}{Machine Learning Engineer}{Sep 2021 -- Present}{Zillow (Zestimate)}{Remote}{3.5Y}
 \end{resumeentry}
 
 \begin{projectentry}
@@ -178,7 +190,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Managed interns and Mentored new hire, fostering technical skill development and guiding them through project contributions.
+    Managed interns and Mentored new hires and junior engineers, fostering technical skill development and guiding them through project contributions.
 \end{projectdesc}
 
 \begin{resumeentry}{Machine Learning Engineer}{May 2020 - Sep 2021}{OkCupid (Match.com)}{New York City}{1.5Y}
@@ -308,8 +320,6 @@
 \begin{tabularx}{\textwidth}{@{} l X @{}}
 \textbf{\iconlink{\faUsers}{https://sites.google.com/view/w-mufin/organizers}{Organizer @ MUFin}} & Committee member, organizer and reviewer to the MUFin Workshop at top conferences, focusing on innovative approaches to modeling uncertainty in the financial sector \textit{(AAAI2023, PKDD2022)} \\[3pt]
 
-\textbf{\iconlink{\faFile}{https://resume.precruit.ai/}{Resume Analyzer}} & Resume analysis tool that uses OpenAI's API to improve resume and prepare an impactful introduction script \\[3pt]
-
 \textbf{\iconlink{\faGithub}{https://github.com/puneetsl/lotion}{Lotion}} & Unofficial Notion.so Desktop app for Linux \textit{(2K+ GitHub stars / 60K+ Clones \& Downloads)} \\[3pt]
 
 \textbf{\iconlink{\faGithub}{https://github.com/puneetsl/Romadeva}{Romadeva}} & Tool to convert Roman script to Indic(Devanagari) script \textit{(Used by https://translatorswithoutborders.org)} \\[3pt]
@@ -322,4 +332,84 @@
 
 \normalsizesection
 
-\end{document} 
+% Add a simple skill visualization - Fixed charts section with better spacing
+\begin{center}
+\sectionbox{Professional Focus \& Evolution}
+\end{center}
+
+% Improved spacing between charts and adjusted minipage widths
+\begin{minipage}[t]{0.48\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.9, transform shape]
+\pie[
+  radius=2.1,
+  color={chartblue, chartyellow, chartorange, chartgreen, chartred, chartpurple, chartteal},
+  text=pin,
+  sum=100,
+  after number=\%,
+  before number=\phantom{0},
+  every pin/.style={align=center},
+  every pin label/.style={font=\footnotesize}
+]{25/Architecture, 13/MLOps, 12/Leadership, 10/Prompt Eng., 20/Coding, 10/Modeling, 10/Data Eng.}
+\end{tikzpicture}
+\end{center}
+\end{minipage}%
+\hfill% Use hfill for better automatic spacing
+\begin{minipage}[t]{0.48\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.9, transform shape]
+\begin{axis}[
+    width=7.5cm,
+    height=5.3cm,
+    title={Career Responsibility Evolution},
+    xlabel={Year},
+    ylabel={Percentage (\%)}, % Added % symbol to the y-axis label
+    xmin=2010, xmax=2026,
+    ymin=0, ymax=80,
+    xtick={2011,2015,2019,2023,2025},
+    ytick={0,20,40,60,80},
+    yticklabel={\pgfmathprintnumber{\tick}\%}, % Added % symbol to the tick labels
+    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=1, font=\footnotesize},
+    ymajorgrids=true,
+    grid style=dashed,
+    tick label style={font=\tiny},
+    title style={font=\small},
+    label style={font=\footnotesize},
+]
+
+\addplot[
+    color=chartred,
+    mark=*,
+    line width=1pt,
+    ]
+    coordinates {
+    (2011,75)(2013,67)(2015,60)(2017,53)(2019,45)(2021,40)(2023,34)(2025,40)
+    };
+\addlegendentry{Coding \& Technical Implementation}
+
+\addplot[
+    color=chartblue,
+    mark=*,
+    line width=1pt,
+    ]
+    coordinates {
+    (2011,20)(2013,27)(2015,33)(2017,40)(2019,45)(2021,48)(2023,45)(2025,40)
+    };
+\addlegendentry{Architecture \& Infrastructure}
+
+\addplot[
+    color=chartorange,
+    mark=*,
+    line width=1pt,
+    ]
+    coordinates {
+    (2011,5)(2013,6)(2015,7)(2017,7)(2019,10)(2021,12)(2023,21)(2025,20)
+    };
+\addlegendentry{Leadership \& Innovation}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\end{document}
