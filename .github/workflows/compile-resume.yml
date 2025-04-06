@@ -75,6 +75,8 @@ jobs:
           cp resume.pdf "puneet_ludu_resume_latest.pdf"
 
       - name: Convert LaTeX to Markdown and clean up
+        env:
+          GH_KEY: ${{ secrets.GH_KEY }}
         run: |
           # Convert LaTeX to Markdown using Pandoc
           pandoc -s resume.tex -o resume_raw.md
