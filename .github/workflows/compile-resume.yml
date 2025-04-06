@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version number (e.g., 1.0)"
+        description: "Version number (e.g., 9.6)"
         required: true
-        default: "1.0"
+        default: "9.6"
 
 jobs:
   build:
@@ -23,47 +23,87 @@ jobs:
           root_file: resume.tex
           latexmk_use_xelatex: false
 
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
       - name: Get version number
         id: get_version
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
           else
-            # Extract version from git tag if available, otherwise use 1.0
-            VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "1.0")
-            echo "VERSION=$VERSION" >> $GITHUB_ENV
+            # Check if versions directory exists and has files
+            if [ -d "versions" ] && [ "$(ls -A versions)" ]; then
+              # Get the latest version from the versions directory
+              LATEST_VERSION=$(ls -1 versions/puneet_ludu_v*.pdf | sort -V | tail -n 1 | grep -oP 'v\K[0-9]+\.[0-9]+')
+              
+              # Extract major and minor version
+              MAJOR=$(echo $LATEST_VERSION | cut -d. -f1)
+              MINOR=$(echo $LATEST_VERSION | cut -d. -f2)
+              
+              # Increment minor version by 2
+              NEW_MINOR=$((MINOR + 2))
+              
+              # If minor version exceeds 8, increment major and reset minor to 0
+              if [ $NEW_MINOR -gt 8 ]; then
+                NEW_MAJOR=$((MAJOR + 1))
+                NEW_MINOR=0
+              else
+                NEW_MAJOR=$MAJOR
+              fi
+              
+              echo "VERSION=$NEW_MAJOR.$NEW_MINOR" >> $GITHUB_ENV
+            else
+              # Default to 9.6 if versions directory is empty
+              echo "VERSION=9.6" >> $GITHUB_ENV
+            fi
           fi
 
-      - name: Rename PDF with version
-        run: |
-          mkdir -p releases
-          cp resume.pdf "releases/puneet_ludu_v${{ env.VERSION }}.pdf"
-          # Also copy to root for direct access
-          cp resume.pdf "puneet_ludu_resume.pdf"
+          echo "Using version: ${{ env.VERSION }}"
 
-      - name: Move current README to RUNSTEPS.md
+      - name: Create versions directory
         run: |
-          if [ -f README.md ]; then
-            cp README.md RUNSTEPS.md
-          fi
+          mkdir -p versions
 
-      - name: Create new README.md with iframe
+      - name: Save versioned PDF
+        run: |
+          cp resume.pdf "versions/puneet_ludu_v${{ env.VERSION }}.pdf"
+          # Also copy to root as latest version
+          cp resume.pdf "puneet_ludu_resume_latest.pdf"
+
+      - name: Convert LaTeX to Markdown
+        run: |
+          pandoc -s resume.tex -o resume.md
+
+      - name: Create README.md with Markdown content and PDF link
         run: |
           # Extract basic information from LaTeX file
           NAME=$(grep -oP '\\textbf{\\color{namecolor}Puneet Ludu}' resume.tex | sed 's/\\textbf{\\color{namecolor}//g' | sed 's/}//g')
 
-          # Create README content with iframe
+          # Create README content
           cat > README.md << EOF
           # $NAME's Resume
 
           ## Latest Version: v${{ env.VERSION }}
 
-          <iframe src="puneet_ludu_resume.pdf" width="100%" height="800px" style="border: none;"></iframe>
+          ## PDF Version
+
+          [![Resume PDF](https://img.shields.io/badge/Resume-PDF-blue.svg)](puneet_ludu_resume_latest.pdf)
+
+          ## Markdown Version
+
+          $(cat resume.md)
 
           ## Download Options
 
-          - [Download PDF](puneet_ludu_resume.pdf)
-          - [View on GitHub](https://github.com/puneetsl/resume/blob/main/puneet_ludu_resume.pdf)
+          - [Download Latest PDF](puneet_ludu_resume_latest.pdf)
+          - [View on GitHub](https://github.com/puneetsl/resume/blob/main/puneet_ludu_resume_latest.pdf)
+
+          ## Previous Versions
+
+          All previous versions are available in the [versions](versions/) directory.
 
           ## Compilation Instructions
 
@@ -74,7 +114,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
-          path: releases/puneet_ludu_v${{ env.VERSION }}.pdf
+          path: |
+            puneet_ludu_resume_latest.pdf
+            versions/puneet_ludu_v${{ env.VERSION }}.pdf
           retention-days: 30
 
       - name: Upload README artifact
@@ -89,7 +131,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            releases/puneet_ludu_v${{ env.VERSION }}.pdf
+            puneet_ludu_resume_latest.pdf
+            versions/puneet_ludu_v${{ env.VERSION }}.pdf
             README.md
           tag_name: v${{ env.VERSION }}
           name: Resume v${{ env.VERSION }}
@@ -104,6 +147,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md RUNSTEPS.md puneet_ludu_resume.pdf
+          git add README.md RUNSTEPS.md puneet_ludu_resume_latest.pdf versions/
           git commit -m "Update README and PDF for version ${{ env.VERSION }}" || echo "No changes to commit"
           git push
