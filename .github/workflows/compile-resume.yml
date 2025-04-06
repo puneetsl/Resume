@@ -2,7 +2,7 @@ name: Compile Resume
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
     inputs:
       version:
@@ -38,72 +38,37 @@ jobs:
         run: |
           mkdir -p releases
           cp resume.pdf "releases/puneet_ludu_v${{ env.VERSION }}.pdf"
+          # Also copy to root for direct access
+          cp resume.pdf "puneet_ludu_resume.pdf"
 
-      - name: Generate README from LaTeX
+      - name: Move current README to RUNSTEPS.md
+        run: |
+          if [ -f README.md ]; then
+            cp README.md RUNSTEPS.md
+          fi
+
+      - name: Create new README.md with iframe
         run: |
           # Extract basic information from LaTeX file
           NAME=$(grep -oP '\\textbf{\\color{namecolor}Puneet Ludu}' resume.tex | sed 's/\\textbf{\\color{namecolor}//g' | sed 's/}//g')
-          EMAIL=$(grep -oP 'puneet\.ludu@gmail\.com' resume.tex)
-          LOCATION=$(grep -oP 'New York, NY' resume.tex)
-          PHONE=$(grep -oP '\+1-\(716\) 867-4344' resume.tex)
-          WEBSITE=$(grep -oP 'https://puneet\.io' resume.tex)
 
-          # Create README content
-          cat > master_readme.md << EOF
-          # $NAME
+          # Create README content with iframe
+          cat > README.md << EOF
+          # $NAME's Resume
 
-          ## Contact Information
-          - **Email:** $EMAIL
-          - **Location:** $LOCATION
-          - **Phone:** $PHONE
-          - **Website:** [$WEBSITE]($WEBSITE)
+          ## Latest Version: v${{ env.VERSION }}
 
-          ## Professional Summary
-          Machine Learning Engineer with 11+ years of experience in developing and deploying ML solutions.
+          <iframe src="puneet_ludu_resume.pdf" width="100%" height="800px" style="border: none;"></iframe>
 
-          ## Experience
-          ### Zillow (Zestimate) - Machine Learning Engineer
-          **Sep 2021 -- Present** | Remote
+          ## Download Options
 
-          - Led development of interactive CMA platform with realtime valuations
-          - Modernized ML infrastructure, achieving \$500k annual cost savings
-          - Improved team efficiency and reduced on-call alerts by 95%
+          - [Download PDF](puneet_ludu_resume.pdf)
+          - [View on GitHub](https://github.com/puneetsl/resume/blob/main/puneet_ludu_resume.pdf)
 
-          ### OkCupid (Match.com) - Machine Learning Engineer
-          **May 2020 - Sep 2021** | New York City
+          ## Compilation Instructions
 
-          - Optimized subscription pricing, increasing revenue by 6%
-
-          ### FactSet - Machine Learning Engineer
-          **Apr 2015 - May 2020** | New York City
-
-          - Developed speaker identification system for earnings calls
-          - Implemented document deduplication service with 66% performance improvement
-
-          ## Skills
-          - **Languages:** Python, Java, C/C++, Bash, Javascript, HTML, SQL
-          - **Frameworks:** PySpark, Keras, Metaflow, KubeFlow, TensorFlow, PyTorch, MongoDB, FastAPI, Django
-
-          ## Education
-          - **Master of Science** in Computer Science, State University of New York, Buffalo, NY (2014)
-          - **B. Tech.** in Computer Science and Engineering, JIIT, India (2010)
-
-          ## Publications
-          - [Inferring Latent Attributes of an Indian Twitter user using Celebrities and Class Influencers](http://dl.acm.org/citation.cfm?id=2806657) - ACM Hypertext 2015
-          - [Inferring gender of a Twitter user using celebrities it follows](http://arxiv.org/abs/1405.6667) - CORR 2014
-
-          ## Personal Projects
-          - **Lotion:** Unofficial Notion.so Desktop app for Linux (2K+ GitHub stars)
-          - **Romadeva:** Tool to convert Roman script to Indic(Devanagari) script
-          - **jTextBrew:** JAVA library for fuzzy string matching
-
-          ---
-          *This README was automatically generated from my LaTeX resume. For the full resume, please visit [my resume repository](https://github.com/puneetsl/resume).*
+          For instructions on how to compile this resume, see [RUNSTEPS.md](RUNSTEPS.md).
           EOF
-
-          # Upload the generated README
-          mkdir -p releases
-          cp master_readme.md releases/README.md
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
@@ -116,7 +81,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: resume-readme
-          path: releases/README.md
+          path: README.md
           retention-days: 30
 
       - name: Create Release
@@ -125,7 +90,7 @@ jobs:
         with:
           files: |
             releases/puneet_ludu_v${{ env.VERSION }}.pdf
-            releases/README.md
+            README.md
           tag_name: v${{ env.VERSION }}
           name: Resume v${{ env.VERSION }}
           body: |
@@ -134,3 +99,11 @@ jobs:
             Automatically compiled from the LaTeX source.
           draft: false
           prerelease: false
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md RUNSTEPS.md puneet_ludu_resume.pdf
+          git commit -m "Update README and PDF for version ${{ env.VERSION }}" || echo "No changes to commit"
+          git push
