@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc python3-pip
-          pip install latex2markdown
+          pip install openai
 
       - name: Get version number
         id: get_version
@@ -74,10 +74,13 @@ jobs:
           # Also copy to root as latest version
           cp resume.pdf "puneet_ludu_resume_latest.pdf"
 
-      - name: Convert LaTeX to Markdown
+      - name: Convert LaTeX to Markdown and clean up
         run: |
-          # Convert LaTeX to Markdown using latex2markdown
-          python -m latex2markdown resume.tex resume.md
+          # Convert LaTeX to Markdown using Pandoc
+          pandoc -s resume.tex -o resume_raw.md
+
+          # Run the Python script to clean up the Markdown
+          python clean_markdown.py
 
           # Obfuscate email addresses
           sed -i -E 's/([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/\1 [at] \2/g' resume.md
