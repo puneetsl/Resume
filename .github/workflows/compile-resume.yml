@@ -23,10 +23,11 @@ jobs:
           root_file: resume.tex
           latexmk_use_xelatex: false
 
-      - name: Install Pandoc and PDF tools
+      - name: Install Pandoc and Python tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc poppler-utils
+          sudo apt-get install -y pandoc python3-pip
+          pip install latex2markdown
 
       - name: Get version number
         id: get_version
@@ -73,39 +74,10 @@ jobs:
           # Also copy to root as latest version
           cp resume.pdf "puneet_ludu_resume_latest.pdf"
 
-      - name: Convert PDF to Markdown
+      - name: Convert LaTeX to Markdown
         run: |
-          # Convert PDF to text with layout preserved
-          pdftotext -layout resume.pdf resume.txt
-
-          # Process text into Markdown format
-          awk '
-          BEGIN { in_list = 0 }
-          {
-            # Skip empty lines
-            if (NF == 0) { print ""; next }
-            
-            # Check for section headers (all caps or followed by years)
-            if ($0 ~ /^[A-Z\s]+$/ || $0 ~ /^[A-Z\s]+[0-9]+ years/) {
-              print "\n## " $0 "\n"
-              next
-            }
-            
-            # Check for bold text (usually job titles)
-            if ($0 ~ /^[A-Z][a-zA-Z\s]+$/) {
-              print "**" $0 "**"
-              next
-            }
-            
-            # Check for italic text (usually dates and locations)
-            if ($0 ~ /^[A-Za-z]+\s[0-9]{4}\s/) {
-              print "_" $0 "_"
-              next
-            }
-            
-            # Regular text
-            print $0
-          }' resume.txt > resume.md
+          # Convert LaTeX to Markdown using latex2markdown
+          python -m latex2markdown resume.tex resume.md
 
           # Obfuscate email addresses
           sed -i -E 's/([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/\1 [at] \2/g' resume.md
