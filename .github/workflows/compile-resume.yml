@@ -39,18 +39,93 @@ jobs:
           mkdir -p releases
           cp resume.pdf "releases/puneet_ludu_v${{ env.VERSION }}.pdf"
 
+      - name: Generate README from LaTeX
+        run: |
+          # Extract basic information from LaTeX file
+          NAME=$(grep -oP '\\textbf{\\color{namecolor}Puneet Ludu}' resume.tex | sed 's/\\textbf{\\color{namecolor}//g' | sed 's/}//g')
+          EMAIL=$(grep -oP 'puneet\.ludu@gmail\.com' resume.tex)
+          LOCATION=$(grep -oP 'New York, NY' resume.tex)
+          PHONE=$(grep -oP '\+1-\(716\) 867-4344' resume.tex)
+          WEBSITE=$(grep -oP 'https://puneet\.io' resume.tex)
+
+          # Create README content
+          cat > master_readme.md << EOF
+          # $NAME
+
+          ## Contact Information
+          - **Email:** $EMAIL
+          - **Location:** $LOCATION
+          - **Phone:** $PHONE
+          - **Website:** [$WEBSITE]($WEBSITE)
+
+          ## Professional Summary
+          Machine Learning Engineer with 11+ years of experience in developing and deploying ML solutions.
+
+          ## Experience
+          ### Zillow (Zestimate) - Machine Learning Engineer
+          **Sep 2021 -- Present** | Remote
+
+          - Led development of interactive CMA platform with realtime valuations
+          - Modernized ML infrastructure, achieving \$500k annual cost savings
+          - Improved team efficiency and reduced on-call alerts by 95%
+
+          ### OkCupid (Match.com) - Machine Learning Engineer
+          **May 2020 - Sep 2021** | New York City
+
+          - Optimized subscription pricing, increasing revenue by 6%
+
+          ### FactSet - Machine Learning Engineer
+          **Apr 2015 - May 2020** | New York City
+
+          - Developed speaker identification system for earnings calls
+          - Implemented document deduplication service with 66% performance improvement
+
+          ## Skills
+          - **Languages:** Python, Java, C/C++, Bash, Javascript, HTML, SQL
+          - **Frameworks:** PySpark, Keras, Metaflow, KubeFlow, TensorFlow, PyTorch, MongoDB, FastAPI, Django
+
+          ## Education
+          - **Master of Science** in Computer Science, State University of New York, Buffalo, NY (2014)
+          - **B. Tech.** in Computer Science and Engineering, JIIT, India (2010)
+
+          ## Publications
+          - [Inferring Latent Attributes of an Indian Twitter user using Celebrities and Class Influencers](http://dl.acm.org/citation.cfm?id=2806657) - ACM Hypertext 2015
+          - [Inferring gender of a Twitter user using celebrities it follows](http://arxiv.org/abs/1405.6667) - CORR 2014
+
+          ## Personal Projects
+          - **Lotion:** Unofficial Notion.so Desktop app for Linux (2K+ GitHub stars)
+          - **Romadeva:** Tool to convert Roman script to Indic(Devanagari) script
+          - **jTextBrew:** JAVA library for fuzzy string matching
+
+          ---
+          *This README was automatically generated from my LaTeX resume. For the full resume, please visit [my resume repository](https://github.com/puneetsl/resume).*
+          EOF
+
+          # Upload the generated README
+          mkdir -p releases
+          cp master_readme.md releases/README.md
+
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
           path: releases/puneet_ludu_v${{ env.VERSION }}.pdf
+          retention-days: 30
+
+      - name: Upload README artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-readme
+          path: releases/README.md
           retention-days: 30
 
       - name: Create Release
         if: github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v1
         with:
-          files: releases/puneet_ludu_v${{ env.VERSION }}.pdf
+          files: |
+            releases/puneet_ludu_v${{ env.VERSION }}.pdf
+            releases/README.md
           tag_name: v${{ env.VERSION }}
           name: Resume v${{ env.VERSION }}
           body: |
