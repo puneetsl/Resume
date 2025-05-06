@@ -1,6 +1,6 @@
 # Puneet Ludu's Resume
 
-##### Latest Version: v10.1 
+##### Latest Version: v10.2 
 [![Resume PDF](https://img.shields.io/badge/Resume-PDF-blue.svg)](puneet_ludu_resume_latest.pdf)
 
 ## Resume in Markdown
@@ -11,74 +11,71 @@ Location: New York, NY\
 Phone: +1-(716) eight six seven four three four four\
 Website: [puneet.io](https://puneet.io)
 
-- [GitHub](https://github.com/puneetsl)
+- [Github](https://github.com/puneetsl)
 - [LinkedIn](https://www.linkedin.com/in/puneetsl)
 - [Kaggle](https://www.kaggle.com/puneetsl)
 
 ## Experience (11 years)
 
-### Machine Learning Engineer
-**Zillow (Zestimate)**, Remote\
-*Sep 2021 -- Present*
+### Machine Learning Engineer, Zillow (Zestimate)
+*Sep 2021 -- Present*, Remote
 
 #### Interactive CMA & Realtime Valuation (Django, DocumentDB, PyTorch)
-- Architected and led the end-to-end development of an interactive Comparative Market Analysis (CMA) platform with Realtime Valuations, Property Embeddings and Comps API.
-- Impact: 0 to 1 project to boost engagement and satisfaction, paving the way for new revenue streams.
+Architected and led the end-to-end development of an interactive Comparative Market Analysis (CMA) platform with Realtime Valuations, Property Embeddings and Comps API, providing agents and buyers with data-driven tools to support home pricing, enhancing client decision-making and driving potential revenue through valuation services.\
+*Impact: 0 to 1 project to boost engagement and satisfaction, paving the way for new revenue streams.*
 
 #### Zestimate Infrastructure Modernization (Python, Terraform, AWS, Kubeflow, Metaflow, Docker, Gitlab CI)
-- Led the modernization of a critical valuation ML infrastructure, transitioning to more cost-effective, containerized technologies.
-- Impact: Achieved operational improvements and annual cost savings of $500k.
+Led the modernization of a critical valuation ML infrastructure, transitioning to more cost-effective, containerized technologies, resulting in substantial annual cost savings and enhanced system scalability.\
+*Impact: Achieved operational improvements and annual cost savings of $500k.*
 
 #### Technical Innovation & Team Collaboration
-- Integrated advanced machine learning tools into team workflows and established coding standards.
-- Impact: Improved overall team efficiency, code quality. Reduced On-Call alerts by 95%.
+Integrated advanced machine learning tools into team workflows and established coding standards, significantly enhancing collaboration and experiment tracking capabilities. Contributed to open-source projects.\
+*Impact: Improved overall team efficiency, code quality. Reduced On-Call alerts by 95%.*
 
 #### Leadership & Mentorship
-- Managed interns and Mentored new hires and junior engineers, fostering technical skill development and guiding them through project contributions.
+Managed interns and mentored new hires and junior engineers, fostering technical skill development and guiding them through project contributions.
 
-### Machine Learning Engineer
-**OkCupid (Match.com)**, New York City\
-*May 2020 - Sep 2021*
+### Machine Learning Engineer, OkCupid (Match.com)
+*May 2020 - Sep 2021*, New York City
 
 #### Discount Optimization (Python, Keras, TensorFlow, Weights and Biases)
-- Lead the efforts to optimize subscription pricing(discounts) to maximize the revenue for OKCupid.
-- Impact: Increased overall revenue by 6% through A/B testing against assigned prices.
+Lead the efforts to optimize subscription pricing(discounts) to maximize the revenue for OKCupid, Implemented end-to-end ML pipelines, feature engineering, modelling, alerting etc.\
+*Impact: Increased overall revenue by 6% through A/B testing against assigned prices.*
 
-### Machine Learning Engineer
-**FactSet**, New York City\
-*Apr 2015 - May 2020*
+### Machine Learning Engineer, FactSet
+*Apr 2015 - May 2020*, New York City
 
 #### Earning Call Speaker Identification (Python, TensorFlow, Keras)
-- Developed and deployed an end-to-end speaker identification system to identify speakers in real-time during company quarterly earnings calls using computer vision and deep neural networks.
-- Impact: In early testing it was estimated to save around 20% human-hours.
+Developed and deployed an end-to-end speaker identification system to identify speakers in real-time during company quarterly earnings calls using computer vision and deep neural networks.\
+*Impact: In early testing it was estimated to save around 20% human-hours.*
 
 #### Private-company fact extraction (Python, Keras, Sagemaker, DataBricks)
-- Lead the efforts to extract 'full company name' with key-people, their titles and biographies etc. from 1.6 million crawled and cached websites of private companies.
+Lead the efforts to extract 'full company name' with key-people, their titles and biographies etc. from 1.6 million crawled and cached websites of private companies.
 
 #### Fuzzy Duplicate Document Identification Service (Java, Couchbase)
-- Developed full-stack solution to identify the duplicate documents in real time, given a stream of thousands of documents per day.
-- Impact: 66% reduction in compute time for document processing. Also, used by StreetAccount to find trending news.
+Developed full-stack solution to identify the duplicate documents in real time, given a stream of thousands of documents per day\
+*Impact: 66% reduction in compute time for document processing. Also, used by StreetAccount to find trending news.*
 
 #### Type-Ahead and Query expansion (Apache Spark, Java, Python)
-- Lead developer for implementing features like Autocomplete Query(Type Ahead) and suggest similar concepts to expand the formulated query for a 'Financial Document Search Engine'.
+Lead developer for implementing features like Autocomplete Query(Type Ahead) and suggest similar concepts to expand the formulated query for a 'Financial Document Search Engine'
 
 #### Realtime Formula Ranking (Apache Spark, Python)
-- Developed the pipeline to cluster users and rank the formulas in the feature of FactSet terminal.
-- Impact: Average rank brought down from 5.6(ElasticSearch based) to 2.3(Language Model based).
+Developed the pipeline to cluster users and rank the formulas in the feature of FactSet terminal\
+*Impact: Average rank brought down from 5.6(ElasticSearch based) to 2.3(Language Model based)*
 
-### ML Research Engineer
-**Tata Research Development and Design Centre**, India\
-*July 2011 - July 2013*
+### ML Research Engineer, Tata Research Development and Design Centre
+*July 2011 - July 2013*, India
 
 #### Event Detection in Time Series (Java, Python, RapidMiner)
-- Wrote an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.
+Wrote an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.
 
 #### Data Harmonization Framework (DHF) (Java, Apache Pig)
-- Implemented an ETL framework that exploits the power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.
+Implemented an ETL framework that exploits the power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.
 
 ## Skills
 **Languages:** Python, Java, C/C++, Bash, Javascript, HTML, SQL\
-**Frameworks:** PySpark, Keras, Metaflow, KubeFlow, TensorFlow, PyTorch, MongoDB, FastAPI, Django
+**Frameworks:** PySpark, FastAPI, Metaflow, KubeFlow, TensorFlow/PyTorch, W&B, DataBricks, Django\
+**AI Dev & Infra:** Cursor, V0, MongoDB, Pinecone, Docker, Kubernetes, Terraform, Gitlab CI
 
 ## Publications
 [Google Scholar profile](https://scholar.google.com/citations?user=NrYKcaMAAAAJ&hl=en)
@@ -92,11 +89,11 @@ Website: [puneet.io](https://puneet.io)
 **B. Tech.** in Computer Science and Engineering, JIIT, India
 
 ## Personal Projects / Extra Curricular
-- [Organizer @ MUFin](https://sites.google.com/view/w-mufin/organizers): Committee member, organizer and reviewer to the MUFin Workshop at top conferences, focusing on innovative approaches to modeling uncertainty in the financial sector (AAAI2023, PKDD2022).
-- [Lotion](https://github.com/puneetsl/lotion): Unofficial Notion.so Desktop app for Linux (2K+ GitHub stars / 60K+ Clones & Downloads).
-- [Romadeva](https://github.com/puneetsl/Romadeva): Tool to convert Roman script to Indic(Devanagari) script (Used by https://translatorswithoutborders.org).
-- [jTextBrew](https://github.com/puneetsl/jtextbrew): A JAVA library for fuzzy string matching, based on TextBrew algorithm by Chris Brew.
-- [Quena](https://www.facebook.com/photo): Question and Answering system -- Indexed 1.6 Million Wikipedia documents, designed a question parser and a ranking algorithm based on popularity. (Apache Solr, NER, POS tagger).
+- [Organizer @ MUFin](https://sites.google.com/view/w-mufin/organizers): Committee member, organizer and reviewer to the MUFin Workshop at top conferences, focusing on innovative approaches to modeling uncertainty in the financial sector (AAAI2023, PKDD2022)
+- [Lotion](https://github.com/puneetsl/lotion): Unofficial Notion.so Desktop app for Linux (2K+ GitHub stars / 60K+ Clones & Downloads)
+- [Romadeva](https://github.com/puneetsl/Romadeva): Tool to convert Roman script to Indic(Devanagari) script (Used by https://translatorswithoutborders.org)
+- [jTextBrew](https://github.com/puneetsl/jtextbrew): A JAVA library for fuzzy string matching, based on TextBrew algorithm by Chris Brew
+- [Quena](https://www.facebook.com/photo): Question and Answering system -- Indexed 1.6 Million Wikipedia documents, designed a question parser and a ranking algorithm based on popularity. (Apache Solr, NER, POS tagger)
 
 ## Professional Focus & Evolution
 
