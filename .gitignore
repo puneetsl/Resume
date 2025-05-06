@@ -262,3 +262,7 @@ TSWLatexianTemp*
 
 # Mac OS
 .DS_Store 
+
+# all files that starts with resume in main directory except resume.tex
+/resume*
+!/resume.tex
