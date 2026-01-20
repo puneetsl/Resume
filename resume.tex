@@ -93,7 +93,7 @@
 
 % Custom commands
 \newcommand{\yearsright}[1]{{\footnotesize\bfseries\color{yearcolor} #1}}
-\newcommand{\impact}[1]{\textit{Impact: #1}}
+\newcommand{\impact}[1]{\textbf{Impact:} \textit{#1}}
 \newcommand{\tech}[1]{\textit{(#1)}}
 \newcommand{\approach}[1]{[#1]}
 \newcommand{\entryspace}{\vspace{-1pt}}
@@ -158,54 +158,44 @@
 \begin{resumeentry}{Machine Learning Engineer}{Sep 2021 -- Present}{Zillow (Zestimate)}{Remote}{4Y}
 \end{resumeentry}
 
-% Active Listing Comps - Leading with production impact
+% Listing IQ - Shipped product, led POC
+\begin{projectentry}
+    \projicon{\faChartLine} \textbf{\href{https://grow.zillow.com/listingIQ-comparative-market-analysis}{Listing IQ: Interactive CMA Platform}} \tech{Django, DocumentDB, PyTorch} \approach{Real-time Valuations + Embeddings}
+\end{projectentry}
+
+\begin{projectdesc}
+    Led proof-of-concept and core architecture for platform now live as Listing IQ CMA -- AI-powered tool enabling agents to customize property comparisons with map-based filtering, editable valuations, and amenity-level explanations. Designed APIs integrating real-time Zestimate valuations, property embeddings, and comparative analysis. Mentored junior engineer through production launch.\\[1pt]
+    \impact{POC $\rightarrow$ shipped product powering agent pricing decisions; foundation for new agent revenue products}
+\end{projectdesc}
+
+% Active Listing Comps - Built from ground up
 \begin{projectentry}
     \projicon{\faDatabase} \textbf{Active Listing Comps Engine} \tech{Apache Spark, Metaflow, H3 Geospatial} \approach{Similarity Scoring + Batch/REST APIs}
 \end{projectentry}
 
 \begin{projectdesc}
-    Architected similar listings comparison engine powering Zillow Showcase's go-to-market strategy. Built scalable batch pipeline and real-time API using geospatial indexing (H3) and customizable ranking algorithms. System processes millions of listings daily, generating business-critical performance metrics.\\[1pt]
-    \impact{30\% listing wins, 75\% engagement lift for Showcase - metrics used across sales, marketing, and investor communications}
+    Architected and built similar listings comparison engine from ground up -- batch pipeline and real-time API using H3 geospatial indexing and customizable ranking algorithms. Processes 3M+ listings, powers \href{https://grow.zillow.com/showcase}{Zillow Showcase} dashboards (8M monthly views) helping agents demonstrate listing performance vs non-Showcase homes. Later led infrastructure migration and algorithm improvements.\\[1pt]
+    \impact{95\% complaint reduction, coverage 90\%$\rightarrow$98.5\%; metrics cited in sales, marketing, and investor communications}
 \end{projectdesc}
 
-% Interactive CMA - with integrated explainability
+% Infrastructure & Engineering Leadership - Combined
 \begin{projectentry}
-    \projicon{\faChartLine} \textbf{Interactive CMA \& Realtime Valuation Platform} \tech{Django, DocumentDB, PyTorch} \approach{Siamese Networks + Explainability}
+    \projicon{\faServer} \textbf{Infrastructure \& Engineering Leadership} \tech{Terraform, AWS, Metaflow, Docker}
 \end{projectentry}
 
 \begin{projectdesc}
-    Architected 0-to-1 platform integrating real-time valuations, property embeddings, and amenity explanations. Designed APIs for comparative analysis and interactive agent reporting. Led technical decisions on ML integration and service architecture. Platform launching soon.\\[1pt]
-    \impact{Foundation for new agent revenue products, establishing real-time ML serving patterns}
+    Drove CICD V4 migration and ML pipeline modernization with zero production incidents. Led alert reduction initiatives and bug triage coordination. Conduct technical interviews, mentor junior engineers, and lead code reviews across team.\\[1pt]
+    \impact{\$500K annual savings, 61\% alert reduction (641$\rightarrow$249 alerts YoY)}
 \end{projectdesc}
 
-% Infrastructure modernization with enhanced Staff-level language
+% AI/ML Initiatives - In Progress (C&Q + CCOps)
 \begin{projectentry}
-    \projicon{\faServer} \textbf{Zestimate Infrastructure Modernization} \tech{Terraform, AWS, Kubeflow, Metaflow, Docker}
+    \projicon{\faBrain} \textbf{AI/ML Initiatives (In Progress)} \tech{PyTorch, CLIP, LangChain, Databricks, MLflow}
 \end{projectentry}
 
 \begin{projectdesc}
-    Drove migration of critical ML pipelines from legacy systems to containerized infrastructure. Established CI/CD patterns, monitoring standards, and deployment practices that reduced operational overhead. Mentored team on modern MLOps practices and infrastructure-as-code principles.\\[1pt]
-    \impact{\$500K annual savings, 80\% faster deployments, 95\% reduction in on-call alerts through proactive monitoring}
-\end{projectdesc}
-
-% Combining Amenity Adjustment and LLM tools - both in beta/development
-\begin{projectentry}
-    \projicon{\faBuilding} \textbf{Next-Gen Explainability: Amenity Adjustment \& LLM Tools} \tech{PyTorch, DeepLift, LangChain} 
-\end{projectentry}
-
-\begin{projectdesc}
-    Developing ML explainability service for dollar-value feature attributions and LLM tools for automated Zestimate queries. Building APIs for property data retrieval, comparative analysis, and natural language explanations. Both initiatives in beta, targeting improved user trust and reduced support burden.\\[1pt]
-    \impact{Foundation for automated customer support and transparent valuations}
-\end{projectdesc}
-
-% Technical contributions - specific and accurate
-\begin{projectentry}
-    \projicon{\faCode} \textbf{Engineering Excellence \& Pipeline Stability}
-\end{projectentry}
-
-\begin{projectdesc}
-    Established MR best practices (stacked MRs, pre-submission checklists) and documentation standards. Led weekly bug bashes targeting low-effort, high-impact improvements. Mentored interns and junior engineers.\\[1pt]
-    \impact{Improved Zestimate pipeline success rate from 75\% to 85\%, reducing production incidents}
+    Leading Image Embeddings project -- designing DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration (DRI, cross-team coordination with computer vision and valuation teams). Co-developed customer care tool alpha -- React UI and LLM integration enabling agents to generate personalized, AI-powered Zestimate explanations.\\[1pt]
+    \impact{Advancing visual ML and LLM capabilities for valuation products; first LLM tool deployed to customer care}
 \end{projectdesc}
 
 \begin{resumeentry}{Machine Learning Engineer}{May 2020 - Sep 2021}{OkCupid (Match.com)}{New York City}{1.5Y}
@@ -270,16 +260,19 @@
 \sectionbox{Skills}
 \smallersection
 
-\noindent\textbf{Languages} \hspace{2mm} Python • Java • C/C++ • Bash • Javascript • HTML • SQL
+\noindent\textbf{Languages} \hspace{2mm} Python • Java • C/C++ • Bash • SQL
 
 \vspace{1pt}
-\noindent\textbf{Frameworks} \hspace{0.5mm} PySpark • FastAPI • Metaflow • KubeFlow • TensorFlow/PyTorch • W\&B • DataBricks  • Django
+\noindent\textbf{Frameworks} \hspace{0.5mm} PyTorch/TensorFlow • PySpark • FastAPI • Metaflow • Databricks • MLflow • Django
 
 \vspace{1pt}
-\noindent\textbf{AI Dev \& Infra} \hspace{1mm} Cursor • V0 • MongoDB • Pinecone • Docker • Kubernetes • Terraform • Gitlab CI
+\noindent\textbf{AI/ML} \hspace{6.5mm} CLIP Embeddings • LangChain • RAG • Feature Engineering • A/B Testing • Model Monitoring
 
 \vspace{1pt}
-\noindent\textbf{Leadership} \hspace{4mm} System Design • Technical Mentoring • Cross-functional Collaboration • Code Reviews • Architecture Decisions
+\noindent\textbf{Infra} \hspace{10mm} Docker • Kubernetes • Terraform • GitLab CI • AWS • W\&B • Pinecone
+
+\vspace{1pt}
+\noindent\textbf{Leadership} \hspace{4mm} System Design • Technical Interviews • Mentoring • Code Reviews • Cross-team Coordination
 
 \normalsizesection
 
@@ -316,7 +309,7 @@
 \setlength{\tabcolsep}{6pt}
 \renewcommand{\arraystretch}{1.0}
 \begin{tabularx}{\textwidth}{@{} l X @{}}
-\textbf{\iconlink{\faUsers}{https://sites.google.com/view/w-mufin/organizers}{Organizer @ MUFin}} & Committee member, organizer and reviewer to the MUFin Workshop at top conferences, focusing on innovative approaches to modeling uncertainty in the financial sector \textit{(AAAI2023, PKDD2022)} \\[3pt]
+\textbf{\iconlink{\faUsers}{https://sites.google.com/view/w-mufin/organizers}{Workshop Organizer @ MUFin}} & Program committee member, paper reviewer at top ML conferences -- Workshop on Modeling Uncertainty in the Financial Sector \textit{(AAAI 2023, ECML-PKDD 2022)} \\[3pt]
 
 \textbf{\iconlink{\faGithub}{https://github.com/puneetsl/lotion}{Lotion}} & Unofficial Notion.so Desktop app for Linux \textit{(2K+ GitHub stars / 60K+ Clones \& Downloads)} \\[3pt]
 
@@ -330,80 +323,81 @@
 
 \normalsizesection
 
-% Add a simple skill visualization - Fixed charts section with better spacing
-\begin{center}
+% Condensed skill visualization
 \sectionbox{Professional Focus \& Evolution}
-\end{center}
+\vspace{-3mm}
 
-% Improved spacing between charts and adjusted minipage widths
-\begin{minipage}[t]{0.48\textwidth}
+\begin{minipage}[t]{0.44\textwidth}
 \begin{center}
-\begin{tikzpicture}[scale=0.9, transform shape]
+\begin{tikzpicture}[scale=0.72, transform shape]
 \pie[
-  radius=2.1,
+  radius=1.8,
   color={chartblue, chartyellow, chartorange, chartgreen, chartred, chartpurple, chartteal},
   text=pin,
   sum=100,
   after number=\%,
   before number=\phantom{0},
   every pin/.style={align=center},
-  every pin label/.style={font=\footnotesize}
-]{25/Architecture, 13/MLOps, 12/Leadership, 10/Prompt Eng., 20/Coding, 10/Modeling, 10/Data Eng.}
+  every pin label/.style={font=\scriptsize}
+]{20/Architecture, 10/MLOps, 15/Leadership, 15/Prompt Eng., 20/Coding, 10/Modeling, 10/Data Eng.}
 \end{tikzpicture}
 \end{center}
 \end{minipage}%
-\hfill% Use hfill for better automatic spacing
-\begin{minipage}[t]{0.48\textwidth}
+\hfill
+\begin{minipage}[t]{0.54\textwidth}
 \begin{center}
-\begin{tikzpicture}[scale=0.9, transform shape]
+\begin{tikzpicture}[scale=0.75, transform shape]
 \begin{axis}[
-    width=7.5cm,
-    height=5.3cm,
+    width=7.2cm,
+    height=4.5cm,
     title={Career Responsibility Evolution},
     xlabel={Year},
-    ylabel={Percentage (\%)}, % Added % symbol to the y-axis label
-    xmin=2010, xmax=2026,
+    ylabel={\%},
+    xmin=2010, xmax=2027,
     ymin=0, ymax=80,
-    xtick={2011,2015,2019,2023,2025},
+    xtick={2011,2015,2019,2023,2026},
     ytick={0,20,40,60,80},
-    yticklabel={\pgfmathprintnumber{\tick}\%}, % Added % symbol to the tick labels
-    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=1, font=\footnotesize},
+    yticklabel={\pgfmathprintnumber{\tick}\%},
+    legend style={at={(0.5,-0.25)}, anchor=north, legend columns=3, font=\scriptsize, /tikz/every even column/.append style={column sep=3pt}},
     ymajorgrids=true,
     grid style=dashed,
     tick label style={font=\tiny},
-    title style={font=\small},
-    label style={font=\footnotesize},
+    title style={font=\footnotesize},
+    label style={font=\scriptsize},
 ]
 
 \addplot[
     color=chartred,
     mark=*,
-    line width=1pt,
+    mark size=1.5pt,
+    line width=0.8pt,
     ]
     coordinates {
-    (2011,75)(2013,67)(2015,60)(2017,53)(2019,45)(2021,40)(2023,34)(2025,40)
+    (2011,75)(2013,67)(2015,60)(2017,53)(2019,45)(2021,40)(2023,34)(2025,40)(2026,35)
     };
-\addlegendentry{Coding \& Technical Implementation}
+\addlegendentry{Coding}
 
 \addplot[
     color=chartblue,
     mark=*,
-    line width=1pt,
+    mark size=1.5pt,
+    line width=0.8pt,
     ]
     coordinates {
-    (2011,20)(2013,27)(2015,33)(2017,40)(2019,45)(2021,48)(2023,45)(2025,40)
+    (2011,20)(2013,27)(2015,33)(2017,40)(2019,45)(2021,48)(2023,45)(2025,40)(2026,40)
     };
-\addlegendentry{Architecture \& Infrastructure}
+\addlegendentry{Architecture}
 
 \addplot[
     color=chartorange,
     mark=*,
-    line width=1pt,
+    mark size=1.5pt,
+    line width=0.8pt,
     ]
     coordinates {
-    (2011,5)(2013,6)(2015,7)(2017,7)(2019,10)(2021,12)(2023,21)(2025,20)
+    (2011,5)(2013,6)(2015,7)(2017,7)(2019,10)(2021,12)(2023,21)(2025,20)(2026,25)
     };
-\addlegendentry{Leadership \& Innovation}
+\addlegendentry{Leadership}
 
 \end{axis}
 \end{tikzpicture}
