@@ -1,6 +1,6 @@
 # Puneet Ludu's Resume
 
-##### Latest Version: v10.6 
+##### Latest Version: v10.7 
 [![Resume PDF](https://img.shields.io/badge/Resume-PDF-blue.svg)](puneet_ludu_resume_latest.pdf)
 
 ## Resume in Markdown
@@ -10,78 +10,79 @@ Machine Learning Engineer | 13+ years in ML/AI systems\
 puneet [dot] ludu [at] gmail [dot] com | New York, NY | +1-(716) eight six seven four three four four\
 [puneet.io](https://puneet.io)
 
-[GitHub](https://github.com/puneetsl)\
-[LinkedIn](https://www.linkedin.com/in/puneetsl)\
-[Kaggle](https://www.kaggle.com/puneetsl)\
-[Google Scholar](https://scholar.google.com/citations?user=NrYKcaMAAAAJ&hl=en)
+- [Github](https://github.com/puneetsl)
+- [LinkedIn](https://www.linkedin.com/in/puneetsl)
+- [Kaggle](https://www.kaggle.com/puneetsl)
+- [Google Scholar](https://scholar.google.com/citations?user=NrYKcaMAAAAJ&hl=en)
 
-## Experience (13+ years)
+## Experience 13+ years
 
-**Machine Learning Engineer**, *Sep 2021 -- Present*, **Zillow (Zestimate)**, Remote\
-**[Listing IQ: Interactive CMA Platform](https://grow.zillow.com/listingIQ-comparative-market-analysis)** (Django, DocumentDB, PyTorch) [Real-time Valuations + Embeddings]
+**Zillow (Zestimate)**, Machine Learning Engineer, Sep 2021 -- Present, Remote
 
-- Led proof-of-concept and core architecture for platform now live as Listing IQ CMA -- AI-powered tool enabling agents to customize property comparisons with map-based filtering, editable valuations, and amenity-level explanations. Designed APIs integrating real-time Zestimate valuations, property embeddings, and comparative analysis. Mentored junior engineer through production launch.
-- **Impact:** POC → shipped product powering agent pricing decisions; foundation for new agent revenue products
+- **[Listing IQ: Interactive CMA Platform](https://grow.zillow.com/listingIQ-comparative-market-analysis)** (Django, DocumentDB, PyTorch) [Real-time Valuations + Embeddings]
 
-**Active Listing Comps Engine** (Apache Spark, Metaflow, H3 Geospatial) [Similarity Scoring + Batch/REST APIs]
+Led proof-of-concept and core architecture for platform now live as Listing IQ CMA -- AI-powered tool enabling agents to customize property comparisons with map-based filtering, editable valuations, and amenity-level explanations. Designed APIs integrating real-time Zestimate valuations, property embeddings, and comparative analysis. Mentored junior engineer through production launch.\
+**Impact:** POC → shipped product powering agent pricing decisions; foundation for new agent revenue products
 
-- Architected and built similar listings comparison engine from ground up -- batch pipeline and real-time API using H3 geospatial indexing and customizable ranking algorithms. Processes 3M+ listings, powers [Zillow Showcase](https://grow.zillow.com/showcase) dashboards (8M monthly views) helping agents demonstrate listing performance vs non-Showcase homes. Led ALC migration to DPDS, production in 5 weeks from project start. Later led algorithm improvements.
-- **Impact:** 5 weeks to production; 95% complaint reduction, coverage 90%→98.5%; metrics cited in sales, marketing, and investor communications
+- **Active Listing Comps Engine** (Apache Spark, Metaflow, H3 Geospatial) [Similarity Scoring + Batch/REST APIs]
 
-**Infrastructure & Engineering Leadership** (Terraform, AWS, Metaflow, Docker)
+Architected and built similar listings comparison engine from ground up -- batch pipeline and real-time API using H3 geospatial indexing and customizable ranking algorithms. Processes 3M+ listings, powers [Zillow Showcase](https://grow.zillow.com/showcase) dashboards (8M monthly views) helping agents demonstrate listing performance vs non-Showcase homes. Led ALC migration to DPDS, production in 5 weeks from project start. Later led algorithm improvements.\
+**Impact:** 5 weeks to production; 95% complaint reduction, coverage 90%→98.5%; metrics cited in sales, marketing, and investor communications
 
-- Built Valuation API from POC to production -- FastAPI service handling ~6K requests/day with zero P2 alerts since launch. Led Zestimate 6.6 deprecation (Redis→ODP migration, legacy system shutdown), saving $350K annually. Drove Z7.1 point release to completion -- created MR tracking system, led ETL optimizations. Completed CI/CD pipeline modernization across all team services with zero production incidents.
-- **Impact:** $500K+ combined annual savings, 61% alert reduction (641→249 YoY)
+- **Infrastructure & Engineering Leadership** (Terraform, AWS, Metaflow, Docker)
 
-**AI/ML Initiatives (In Progress)** (PyTorch, CLIP, LangChain, Databricks, MLflow)
+Built Valuation API from POC to production -- FastAPI service handling ~6K requests/day with zero P2 alerts since launch. Led Zestimate 6.6 deprecation (Redis→ODP migration, legacy system shutdown), saving $350K annually. Drove Z7.1 point release to completion -- created MR tracking system, led ETL optimizations. Completed CI/CD pipeline modernization across all team services with zero production incidents.\
+**Impact:** $500K+ combined annual savings, 61% alert reduction (641→249 YoY)
 
-- Leading Image Embeddings project -- designing DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration (DRI, cross-team coordination with computer vision and valuation teams). Built end-to-end LLM-powered customer care tool (React + LangChain), first AI assistant deployed to Zillow customer support, enabling agents to generate personalized Zestimate explanations. Led ZNN-ETL migration to Databricks, identified 8x latency and 10x cost regression in initial migration, optimized to match production performance ($125/run, 2hr runtime) before deployment. Modernizing core Zestimate neural network pipeline.
-- **Impact:** Advancing visual ML and LLM capabilities for valuation products; first LLM tool deployed to customer care
+- **AI/ML Initiatives (In Progress)** (PyTorch, CLIP, LangChain, Databricks, MLflow)
 
-**Mentorship & Technical Leadership**
+Leading Image Embeddings project -- designing DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration (DRI, cross-team coordination with computer vision and valuation teams). Built end-to-end LLM-powered customer care tool (React + LangChain), first AI assistant deployed to Zillow customer support, enabling agents to generate personalized Zestimate explanations. Led ZNN-ETL migration to Databricks -- identified 8x latency and 10x cost regression in initial migration, optimized to match production baselines before deployment. Modernizing core Zestimate neural network pipeline.\
+**Impact:** Advancing visual ML and LLM capabilities for valuation products; first LLM tool deployed to customer care
 
-- Managed summer intern (2023) -- designed project plan, weekly check-ins, received "strongly favorable" feedback. Mentored 4+ engineers across Neural RentZestimate, Call Insight deployment, and onboarding. Created RFC templates adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.
+- **Mentorship & Technical Leadership**
 
-**Machine Learning Engineer**, *May 2020 - Sep 2021*, **OkCupid (Match.com)**, New York City
+Managed summer intern (2023) -- designed project plan, weekly check-ins, received "strongly favorable" feedback. Mentored 4+ engineers across Neural RentZestimate, Call Insight deployment, and onboarding. Created RFC templates adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.
 
-**Discount Optimization** (Python, Keras, TensorFlow, Weights and Biases) [Wide&Deep]
+**Match Group (OkCupid)**, Machine Learning Engineer, May 2020 - Sep 2021, New York City
 
-- Owned end-to-end ML pipeline for subscription discount optimization -- feature engineering, model training, A/B testing, deployment, and production monitoring. Researched and implemented novel uncertainty modeling technique to address model instability.
-- **Impact:** 6% overall revenue increase through A/B tested pricing models
+- **Discount Optimization** (Python, Keras, TensorFlow, Weights and Biases) [Wide&Deep]
 
-**ML Engineer → Senior ML Engineer (promoted Jan 2018)**, *Apr 2015 - May 2020*, **FactSet**, New York City
+Owned end-to-end ML pipeline for subscription discount optimization -- feature engineering, model training, A/B testing, deployment, and production monitoring. Researched and implemented novel uncertainty modeling technique to address model instability.\
+**Impact:** 6% overall revenue increase through A/B tested pricing models
 
-**ML-Powered Financial Data Extraction** (Python, TensorFlow, Keras, Sagemaker) [CNN, ELMo, BiLSTM]
+**FactSet**, ML Engineer → Senior ML Engineer, Apr 2015 - May 2020, New York City
 
-- Led multiple ML initiatives: (1) Speaker identification system for earnings calls using spectrograms and CNNs, (2) Private company fact extraction from 1.6M websites using ELMo/BiLSTM. Rewrote MLangID language identification service. Led machine translation infrastructure (Polish SMT achieving BLEU 69.10).
-- **Impact:** 20% reduction in human-hours for earnings call processing, automated extraction from millions of documents
+- **ML-Powered Financial Data Extraction** (Python, TensorFlow, Keras, Sagemaker) [CNN, ELMo, BiLSTM]
 
-**Financial Document Search & Ranking Systems** (Apache Spark, Java, Python) [Distributed Trie, N-gram LM, Vector Space]
+Led multiple ML initiatives: (1) Speaker identification system for earnings calls using spectrograms and CNNs, (2) Private company fact extraction from 1.6M websites using ELMo/BiLSTM. Rewrote MLangID language identification service. Led machine translation infrastructure (Polish SMT achieving BLEU 69.10).\
+**Impact:** 20% reduction in human-hours for earnings call processing, automated extraction from millions of documents
 
-- Led team of 3 engineers on Document Screening -- built autosuggestion and concept similarity systems. Created FingerPrinter deduplication service (10x response improvement: 1000ms→100ms). Architected Formula Lookup using distributed trie and n-gram language models on Spark.
-- **Impact:** Improved formula ranking from 5.6 to 2.3, 66% faster document processing, powered StreetAccount trending news
+- **Financial Document Search & Ranking Systems** (Apache Spark, Java, Python) [Distributed Trie, N-gram LM, Vector Space]
 
-**Technical Leadership**
+Led team of 3 engineers on Document Screening -- built autosuggestion and concept similarity systems. Created FingerPrinter deduplication service (10x response improvement: 1000ms→100ms). Architected Formula Lookup using distributed trie and n-gram language models on Spark.\
+**Impact:** Improved formula ranking from 5.6 to 2.3, 66% faster document processing, powered StreetAccount trending news
 
-- Established engineering best practices: Jenkins CI, comprehensive test suites, documentation standards. Mentored new hires and junior engineers. FingerPrinter became the model Java project within the ML group.
+- **Technical Leadership**
 
-**ML Research Engineer**, *July 2011 - July 2013*, **Tata Research Development and Design Centre**, India
+Established engineering best practices: Jenkins CI, comprehensive test suites, documentation standards. Mentored new hires and junior engineers. FingerPrinter became the model Java project within the ML group.
 
-**Event Detection in Time Series** (Java, Python, RapidMiner) [SVM - RBF]
+**[Tata Research Development and Design Centre](https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre)**, ML Research Engineer, July 2011 - July 2013, India
 
-- Wrote an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.
+- **Event Detection in Time Series** (Java, Python, RapidMiner) [SVM - RBF]
 
-**Data Harmonization Framework (DHF)** (Java, Apache Pig)
+Wrote an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with 7% better results in the particular domain of car sensors.
 
-- Implemented an ETL framework that exploits the power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.
+- **[Data Harmonization Framework (DHF)](https://ieeexplore.ieee.org/abstract/document/6597127)** (Java, Apache Pig)
+
+Implemented an ETL framework that exploits the power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.
 
 ## Skills
 
-| **Languages** | Python, Java, C/C++, Bash, SQL |
-| **ML/AI** | PyTorch, TensorFlow/Keras, CLIP Embeddings, LangChain, RAG, A/B Testing, Model Monitoring |
-| **Data & Infra** | PySpark, Databricks, MLflow, Metaflow, FastAPI, Django, Docker, Kubernetes, Terraform |
-| **Cloud & CI/CD** | AWS (S3, EC2, SageMaker), GitLab CI, W&B, Pinecone |
-| **Leadership** | System Design, Technical Interviews, Mentoring, RFC Authorship, Cross-team Coordination |
+| **Languages** | Python • Java • C/C++ • Bash • SQL |
+| **ML/AI** | PyTorch • TensorFlow • CLIP • LangChain • RAG • A/B Testing • Monitoring |
+| **Data & Infra** | PySpark • Databricks • MLflow • Metaflow • FastAPI • Django • Docker • Kubernetes • Terraform |
+| **Cloud & CI/CD** | AWS (S3, EC2, SageMaker) • GitLab CI • W&B • Pinecone |
+| **Leadership** | System Design • Technical Interviews • Mentoring • RFC Authorship • Cross-team Coordination |
 
 ## Publications [Google Scholar profile](https://scholar.google.com/citations?user=NrYKcaMAAAAJ&hl=en)
 
@@ -91,16 +92,17 @@ puneet [dot] ludu [at] gmail [dot] com | New York, NY | +1-(716) eight six seven
 
 ## Education
 
-**Master of Science** in Computer Science, State University of New York, Buffalo, NY\
+**Master of Science** in Computer Science, State University of New York, Buffalo, NY
+
 **B. Tech.** in Computer Science and Engineering, JIIT, India
 
 ## Open Source & Community
 
-- [Organizer @ MUFin](https://sites.google.com/view/w-mufin/organizers): Program committee member, paper reviewer at top ML conferences -- Workshop on Modeling Uncertainty in the Financial Sector (AAAI 2023, ECML-PKDD 2022)
-- [Lotion](https://github.com/puneetsl/lotion): Unofficial Notion.so Desktop app for Linux (2K+ GitHub stars / 60K+ Clones & Downloads)
-- [Romadeva](https://github.com/puneetsl/Romadeva): Tool to convert Roman script to Indic(Devanagari) script (Used by [Translators Without Borders](https://translatorswithoutborders.org))
-- [jTextBrew](https://github.com/puneetsl/jtextbrew): A JAVA library for fuzzy string matching, based on TextBrew algorithm by Chris Brew
-- [Quena](https://www.facebook.com/photo.php?fbid=10153613108040010&set=a.10153613186550010&type=3&theater): Question and Answering system -- Indexed 1.6 Million Wikipedia documents, designed a question parser and a ranking algorithm based on popularity. (Apache Solr, NER, POS tagger)
+| **[Organizer @ MUFin](https://sites.google.com/view/w-mufin/organizers)** | Program committee member, paper reviewer at top ML conferences -- Workshop on Modeling Uncertainty in the Financial Sector (AAAI 2023, ECML-PKDD 2022) |
+| **[Lotion](https://github.com/puneetsl/lotion)** | Unofficial Notion.so Desktop app for Linux (2K+ GitHub stars / 60K+ Clones & Downloads) |
+| **[Romadeva](https://github.com/puneetsl/Romadeva)** | Tool to convert Roman script to Indic(Devanagari) script (Used by [Translators Without Borders](https://translatorswithoutborders.org)) |
+| **[jTextBrew](https://github.com/puneetsl/jtextbrew)** | A JAVA library for fuzzy string matching, based on TextBrew algorithm by Chris Brew |
+| **[Quena](https://www.facebook.com/photo.php?fbid=10153613108040010&set=a.10153613186550010&type=3&theater)** | Question and Answering system -- Indexed 1.6 Million Wikipedia documents, designed a question parser and a ranking algorithm based on popularity. (Apache Solr, NER, POS tagger) |
 
 ## Download Options
 
