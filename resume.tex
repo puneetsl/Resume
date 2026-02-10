@@ -6,7 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[fontsize=11.4pt]{fontsize}
+\usepackage[fontsize=11.052pt]{fontsize}
 \usepackage{fontawesome5}
 \usepackage{geometry}
 \usepackage{titlesec}
@@ -102,25 +102,27 @@
 
 % Custom environment for resume entries with hierarchical structure
 \newenvironment{resumeentry}[5]{%
-    \noindent\textbf{#1}\if\relax\detokenize{#1}\relax\else, \fi%
+    % Args: {title}{dates}{company}{location}{years}
+    % Renders: Company, Title, Dates ... Years
+    \noindent\if\relax\detokenize{#3}\relax\else\textbf{#3}, \fi%
+    \if\relax\detokenize{#1}\relax\else#1, \fi%
     \if\relax\detokenize{#2}\relax\else\textit{#2}, \fi%
-    \if\relax\detokenize{#3}\relax\else\textbf{#3}, \fi%
     \if\relax\detokenize{#4}\relax\else#4\fi%
     \if\relax\detokenize{#5}\relax\else\hfill\yearsright{#5}\fi\\[-2pt]
-}{\vspace{-1pt}}
+}{\vspace{1pt}}
 
 % Project entry with indentation and hierarchical structure
 \newenvironment{projectentry}{%
     \leftskip=0.5cm
     \par\noindent
-}{\par\leftskip=0cm\vspace{-2pt}}
+}{\par\leftskip=0cm\vspace{0pt}}
 
 % Project description with deeper indentation
 \newenvironment{projectdesc}{%
     \leftskip=1.0cm
     \footnotesize
     \par\noindent
-}{\par\leftskip=0cm\smallersection\vspace{-3pt}}
+}{\par\leftskip=0cm\smallersection\vspace{1pt}}
 
 % Link with icon
 \newcommand{\iconlink}[3]{%
@@ -129,7 +131,7 @@
 
 % Project icon - new command for project icons
 \newcommand{\projicon}[1]{%
-    {\small\color{gray!70}#1}~%
+    {\small\color{gray!25}#1}~%
 }
 
 % Begin document
@@ -198,7 +200,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Leading Image Embeddings project -- designing DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration (DRI, cross-team coordination with computer vision and valuation teams). Built end-to-end LLM-powered customer care tool (React + LangChain), first AI assistant deployed to Zillow customer support, enabling agents to generate personalized Zestimate explanations. Led ZNN-ETL migration to Databricks, identified 8x latency and 10x cost regression in initial migration, optimized to match production performance (~\$125/run, ~2hr runtime) before deployment. Modernizing core Zestimate neural network pipeline.\\[1pt]
+    Leading Image Embeddings project -- designing DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration (DRI, cross-team coordination with computer vision and valuation teams). Built end-to-end LLM-powered customer care tool (React + LangChain), first AI assistant deployed to Zillow customer support, enabling agents to generate personalized Zestimate explanations. Led ZNN-ETL migration to Databricks -- identified 8x latency and 10x cost regression in initial migration, optimized to match production baselines before deployment. Modernizing core Zestimate neural network pipeline.\\[1pt]
     \impact{Advancing visual ML and LLM capabilities for valuation products; first LLM tool deployed to customer care}
 \end{projectdesc}
 
@@ -211,7 +213,7 @@
     Managed summer intern (2023) -- designed project plan, weekly check-ins, received ``strongly favorable'' feedback. Mentored 4+ engineers across Neural RentZestimate, Call Insight deployment, and onboarding. Created RFC templates adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.\\[1pt]
 \end{projectdesc}
 
-\begin{resumeentry}{Machine Learning Engineer}{May 2020 - Sep 2021}{OkCupid (Match.com)}{New York City}{1.5Y}
+\begin{resumeentry}{Machine Learning Engineer}{May 2020 - Sep 2021}{Match Group (OkCupid)}{New York City}{1.5Y}
 \end{resumeentry}
 
 \begin{projectentry}
@@ -223,7 +225,7 @@
     \impact{6\% overall revenue increase through A/B tested pricing models}
 \end{projectdesc}
 
-\begin{resumeentry}{ML Engineer $\rightarrow$ Senior ML Engineer (promoted Jan 2018)}{Apr 2015 - May 2020}{FactSet}{New York City}{5Y}
+\begin{resumeentry}{ML Engineer $\rightarrow$ Senior ML Engineer}{Apr 2015 - May 2020}{FactSet}{New York City}{5Y}
 \end{resumeentry}
 
 % Combining NLP/ML projects for financial data extraction
@@ -287,7 +289,7 @@
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{@{} l l @{}}
 \textbf{Languages} & Python $\cdot$ Java $\cdot$ C/C++ $\cdot$ Bash $\cdot$ SQL \\
-\textbf{ML/AI} & PyTorch $\cdot$ TensorFlow/Keras $\cdot$ CLIP Embeddings $\cdot$ LangChain $\cdot$ RAG $\cdot$ A/B Testing $\cdot$ Model Monitoring \\
+\textbf{ML/AI} & PyTorch $\cdot$ TensorFlow $\cdot$ CLIP $\cdot$ LangChain $\cdot$ RAG $\cdot$ A/B Testing $\cdot$ Monitoring \\
 \textbf{Data \& Infra} & PySpark $\cdot$ Databricks $\cdot$ MLflow $\cdot$ Metaflow $\cdot$ FastAPI $\cdot$ Django $\cdot$ Docker $\cdot$ Kubernetes $\cdot$ Terraform \\
 \textbf{Cloud \& CI/CD} & AWS (S3, EC2, SageMaker) $\cdot$ GitLab CI $\cdot$ W\&B $\cdot$ Pinecone \\
 \textbf{Leadership} & System Design $\cdot$ Technical Interviews $\cdot$ Mentoring $\cdot$ RFC Authorship $\cdot$ Cross-team Coordination \\
