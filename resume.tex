@@ -5,7 +5,7 @@
 % Packages
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\usepackage[default]{lato}
 \usepackage[fontsize=10.7pt]{fontsize}
 \usepackage{fontawesome5}
 \usepackage{geometry}
@@ -19,20 +19,20 @@
 \usepackage{tikz}
 \usepackage{tcolorbox}
 \usepackage{ragged2e}
-\usepackage{pgfplots}
-\usepackage{pgf-pie}
-\pgfplotsset{compat=1.16}
+\usepackage{needspace}
 
 % Set page margins - UPDATED: reduced margins to use more horizontal space
 \geometry{left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
 
 % Define colors
-\definecolor{namecolor}{RGB}{50, 50, 50}
-\definecolor{sectioncolor}{RGB}{30, 30, 30}
-\definecolor{linkcolor}{RGB}{0, 0, 200}
+\definecolor{namecolor}{RGB}{20, 25, 30}
+\definecolor{accentcolor}{RGB}{60, 45, 65}        % warm graphite — subtle near-black with warm undertone, clearly non-blue
+\definecolor{sectioncolor}{RGB}{60, 45, 65}
+\definecolor{linkcolor}{RGB}{0, 95, 175}          % saturated cool blue — unambiguously a link
 \definecolor{impactcolor}{RGB}{70, 70, 70}
 \definecolor{yearcolor}{RGB}{120, 120, 120}
-\definecolor{sectionbg}{RGB}{245, 245, 245}
+\definecolor{taglinecolor}{RGB}{90, 90, 90}
+\definecolor{rulecolor}{RGB}{200, 200, 205}
 
 % Chart colors
 \definecolor{chartblue}{RGB}{54, 162, 235}      % Architecture
@@ -62,7 +62,7 @@
 \newcommand{\normalsizesection}{\normalsize}
 \newcommand{\smallersection}{\small}
 \newcommand{\smallestsection}{\footnotesize}
-\newcommand{\tinyfootnote}{\fontsize{8pt}{9pt}\selectfont} % Changed from 8.5pt to 8pt
+\newcommand{\tinyfootnote}{\fontsize{8.7pt}{10.4pt}\selectfont}
 
 % Configure section formatting with colored box
 \titleformat{\section}
@@ -73,29 +73,18 @@
     
 \titlespacing{\section}{0pt}{8pt}{2pt}
 
-% Custom section with background
+% Custom section: colored left bar + accent-colored title + thin underline
 \newcommand{\sectionbox}[1]{%
-    \vspace{0.2em}
-    \begin{tcolorbox}[
-        colback=sectionbg,
-        colframe=sectionbg,
-        width=\textwidth,
-        left=5pt,
-        right=5pt,
-        top=2pt,
-        bottom=2pt,
-        boxrule=0pt,
-        arc=0pt,
-        boxsep=0pt,
-    ]
-    \section*{#1}
-    \end{tcolorbox}
-    \vspace{-0.3em}
+    \vspace{0.5em}%
+    \noindent\hbox to \textwidth{{\color{accentcolor}\rule[-1pt]{4pt}{13pt}}\hspace{7pt}\textbf{\large\color{sectioncolor}#1}\hfil}\par
+    \vspace{1pt}
+    \noindent{\color{rulecolor}\rule{\textwidth}{0.4pt}}\par
+    \vspace{-2pt}
 }
 
 % Custom commands
 \newcommand{\yearsright}[1]{{\footnotesize\bfseries\color{yearcolor} #1}}
-\newcommand{\impact}[1]{\textbf{Impact:} \textit{#1}}
+\newcommand{\impact}[1]{\textbf{\color{accentcolor}Impact:} \textit{#1}}
 \newcommand{\tech}[1]{\textit{(#1)}}
 \newcommand{\approach}[1]{[#1]}
 \newcommand{\entryspace}{\vspace{-1pt}}
@@ -104,7 +93,7 @@
 \newenvironment{resumeentry}[5]{%
     % Args: {title}{dates}{company}{location}{years}
     % Renders: Company, Title, Dates ... Years
-    \noindent\if\relax\detokenize{#3}\relax\else\textbf{#3}, \fi%
+    \noindent\if\relax\detokenize{#3}\relax\else\textbf{\color{accentcolor}#3}, \fi%
     \if\relax\detokenize{#1}\relax\else#1, \fi%
     \if\relax\detokenize{#2}\relax\else\textit{#2}, \fi%
     \if\relax\detokenize{#4}\relax\else#4\fi%
@@ -131,26 +120,27 @@
 
 % Project icon - new command for project icons
 \newcommand{\projicon}[1]{%
-    {\small\color{gray!25}#1}~%
+    {\small\color{accentcolor!75}#1}~%
 }
 
 % Begin document
 \begin{document}
 
 % Header with side-by-side layout
-\begin{minipage}[t]{0.6\textwidth}
+\begin{minipage}[t]{0.62\textwidth}
     \vspace{0pt}
-    \fontsize{24pt}{28pt}\selectfont\textbf{\color{namecolor}Puneet Ludu}\\[5pt]
-    {\small ML Engineer \& Tech Lead $\cdot$ Production ML \& LLM Reliability $\cdot$ 13+ yrs}\\[3pt]
-    \footnotesize puneet.ludu@gmail.com | New York, NY | +1-(716) 867-4344 | \href{https://puneet.io}{puneet.io}
+    \fontsize{26pt}{30pt}\selectfont\textbf{\color{namecolor}Puneet Ludu}\\[3pt]
+    {\normalsize\bfseries\color{accentcolor}ML Engineer \& Tech Lead}\\[1pt]
+    {\small\color{taglinecolor}Production ML \& LLM Reliability $\cdot$ 13+ years}\\[4pt]
+    \footnotesize puneet.ludu@gmail.com $\cdot$ New York, NY $\cdot$ +1-(716) 867-4344 $\cdot$ \href{https://puneet.io}{puneet.io}
 \end{minipage}%
-\begin{minipage}[t]{0.4\textwidth}
-    \vspace{0pt}
-    \raggedright
-    \footnotesize\iconlink{\faGithub}{https://github.com/puneetsl}{https://github.com/puneetsl}\\
-    \footnotesize\iconlink{\faLinkedin}{https://www.linkedin.com/in/puneetsl}{https://www.linkedin.com/in/puneetsl}\\
-    \footnotesize\iconlink{\faDatabase}{https://www.kaggle.com/puneetsl}{https://www.kaggle.com/puneetsl}\\
-    \footnotesize\iconlink{\faGraduationCap}{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar}
+\begin{minipage}[t]{0.38\textwidth}
+    \vspace{6pt}
+    \raggedleft
+    \footnotesize{\color{accentcolor}\faGithub}~\href{https://github.com/puneetsl}{github.com/puneetsl}\\[1pt]
+    \footnotesize{\color{accentcolor}\faLinkedin}~\href{https://www.linkedin.com/in/puneetsl}{linkedin.com/in/puneetsl}\\[1pt]
+    \footnotesize{\color{accentcolor}\faKaggle}~\href{https://www.kaggle.com/puneetsl}{kaggle.com/puneetsl}\\[1pt]
+    \footnotesize{\color{accentcolor}\faGraduationCap}~\href{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar}
 \end{minipage}
 
 \vspace{0mm}
@@ -170,7 +160,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Led proof-of-concept and core architecture for platform now live as Listing IQ CMA: AI-powered tool enabling agents to customize property comparisons with map-based filtering, editable valuations, and amenity-level explanations. Designed APIs integrating real-time Zestimate valuations, property embeddings, and comparative analysis. Mentored junior engineer through production launch.\\[1pt]
+    Led \textbf{proof-of-concept and core architecture} for platform now live as Listing IQ CMA: AI-powered tool enabling agents to customize property comparisons with map-based filtering, editable valuations, and amenity-level explanations. Designed APIs integrating real-time Zestimate valuations, property embeddings, and comparative analysis. Mentored junior engineer through production launch.\\[1pt]
     \impact{POC $\rightarrow$ shipped product powering agent pricing decisions; foundation for new agent revenue products}
 \end{projectdesc}
 
@@ -180,7 +170,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Designed and shipped the first LLM assistant deployed to Zillow customer support: personalized Zestimate explanations grounded in real valuation data. Built RAG pipeline that constrains the agent to answer from actual Zestimate features and values rather than free-form generation; layered output validation with schema and range checks to catch out-of-distribution responses before they reach customers. Deployed with deflection rate tracked as the primary production KPI.\\[1pt]
+    Designed and shipped the \textbf{first LLM assistant deployed to Zillow customer support}: personalized Zestimate explanations grounded in real valuation data. Built \textbf{RAG pipeline that constrains the agent} to answer from actual Zestimate features and values rather than free-form generation; layered \textbf{output validation with schema and range checks} to catch out-of-distribution responses before they reach customers. Deployed with \textbf{deflection rate} tracked as the primary production KPI.\\[1pt]
     \impact{First LLM tool deployed to Zillow customer care; production-hardened against hallucination via grounding and output validation}
 \end{projectdesc}
 
@@ -190,7 +180,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Architected and built similar listings comparison engine from ground up: batch pipeline and real-time API using H3 geospatial indexing and customizable ranking algorithms. Processes 3M+ listings, powers \href{https://grow.zillow.com/showcase}{Zillow Showcase} dashboards (8M monthly views) helping agents demonstrate listing performance vs non-Showcase homes. Led migration to append-only listing data source; built lifecycle management and deduplication layer to track active, sold, and removed listings across markets. Production in 5 weeks. Later led algorithm improvements.\\[1pt]
+    Architected and built similar listings comparison engine from ground up: batch pipeline and real-time API using \textbf{H3 geospatial indexing} and customizable ranking algorithms. Processes \textbf{3M+ listings}, powers \href{https://grow.zillow.com/showcase}{Zillow Showcase} dashboards (\textbf{8M monthly views}) helping agents demonstrate listing performance vs non-Showcase homes. Led migration to append-only listing data source; built lifecycle management and deduplication layer to track active, sold, and removed listings across markets. \textbf{Production in 5 weeks.} Later led algorithm improvements.\\[1pt]
     \impact{5 weeks to production; 95\% complaint reduction, coverage 90\%$\rightarrow$98.5\%; metrics cited in sales, marketing, and investor communications}
 \end{projectdesc}
 
@@ -200,17 +190,17 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Built Valuation API from POC to production: FastAPI service handling $\sim$6K requests/day with zero P2 alerts since launch. Led Zestimate 6.6 deprecation (Redis$\rightarrow$hybrid cache feature store for real-time valuations, legacy system shutdown), saving \$350K annually. Drove several Zestimate model point releases to completion; created MR tracking system, led ETL optimizations. Completed CI/CD pipeline modernization across all team services with zero production incidents.\\[1pt]
+    Built Valuation API from POC to production: FastAPI service handling \textbf{$\sim$6K requests/day with zero P2 alerts} since launch. Led Zestimate 6.6 deprecation (Redis$\rightarrow$hybrid cache feature store for real-time valuations, legacy system shutdown), saving \textbf{\$350K annually}. Drove several Zestimate model point releases to completion; created MR tracking system, led ETL optimizations. Completed CI/CD pipeline modernization across all team services with \textbf{zero production incidents}.\\[1pt]
     \impact{\$500K+ combined annual savings, 61\% alert reduction (641$\rightarrow$249 YoY)}
 \end{projectdesc}
 
 % Multimodal Embeddings & Explainable Valuation (prototypes)
 \begin{projectentry}
-    \projicon{\faBrain} \textbf{Multimodal Embeddings \& Explainable Valuation} \tech{PyTorch, CLIP, Databricks} \approach{DualLossAutoEncoder + Per-feature Attribution}
+    \projicon{\faBrain} \textbf{Next-Gen Zestimate: Multimodal + NAM + Explainability} \tech{PyTorch, CLIP, Databricks} \approach{DualLossAutoEncoder + NAM + Per-feature Attribution}
 \end{projectentry}
 
 \begin{projectdesc}
-    Leading Image Embeddings project: experimenting with DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration. Prototyping explainable valuation architecture to produce per-feature dollar-level contributions for downstream AI agents. Led core Zestimate neural network ETL pipeline migration to Databricks; identified and resolved 8x latency and 10x cost regression before production deployment.\\[1pt]
+    Leading Image Embeddings project: experimenting with DualLossAutoEncoder to predict property condition from \textbf{CLIP embeddings (3.3M listings)} for Zestimate integration. Prototyping a \textbf{NAM-based (Neural Additive Models) Zestimate variant} for intrinsic interpretability, alongside a per-feature attribution architecture that exposes dollar-level contributions to downstream AI agents. Led core Zestimate neural network ETL pipeline migration to Databricks; \textbf{identified and resolved 8x latency and 10x cost regression} before production deployment.\\[1pt]
     \impact{Building multimodal and explainability infrastructure for next-generation valuation products}
 \end{projectdesc}
 
@@ -220,7 +210,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Managed summer intern (2023): designed project plan, weekly check-ins, received ``strongly favorable'' feedback. Mentored 4+ engineers across many projects, deployments, and onboardings. Created RFC templates, Stacked MR best practices etc. adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.\\[1pt]
+    Managed summer intern (2023): designed project plan, weekly check-ins, received \textbf{``strongly favorable''} feedback. Mentored \textbf{4+ engineers} across many projects, deployments, and onboardings. Created \textbf{RFC templates, Stacked MR best practices} etc. adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.\\[1pt]
 \end{projectdesc}
 
 \begin{resumeentry}{Machine Learning Engineer}{May 2020 -- Sep 2021}{Match Group (OkCupid)}{New York City}{1.5Y}
@@ -231,10 +221,11 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Owned end-to-end ML pipeline for subscription discount optimization: feature engineering, model training, A/B testing, deployment, and production monitoring. Discovered high prediction variance across model runs; designed ensemble uncertainty estimation using 100-model bagging to quantify and stabilize outputs for production deployment.\\[1pt]
+    Owned \textbf{end-to-end ML pipeline} for subscription discount optimization: feature engineering, model training, A/B testing, deployment, and production monitoring. Discovered high prediction variance across model runs; designed \textbf{ensemble uncertainty estimation using 100-model bagging} to quantify and stabilize outputs for production deployment.\\[1pt]
     \impact{6\% overall revenue increase through A/B tested pricing models}
 \end{projectdesc}
 
+\needspace{6\baselineskip}
 \begin{resumeentry}{ML Engineer $\rightarrow$ Senior ML Engineer}{Apr 2015 -- May 2020}{FactSet}{New York City}{5Y}
 \end{resumeentry}
 
@@ -244,7 +235,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Led multiple ML initiatives: (1) Speaker identification system for earnings calls using spectrograms and CNNs, (2) Private company fact extraction from 1.6M websites using ELMo/BiLSTM. Rewrote MLangID language identification service. Led machine translation infrastructure (Polish SMT achieving BLEU 69.10).\\[1pt]
+    Led multiple ML initiatives: (1) \textbf{Speaker identification} system for earnings calls using spectrograms and CNNs, (2) Private company fact extraction from \textbf{1.6M websites} using ELMo/BiLSTM. Rewrote MLangID language identification service. Led machine translation infrastructure (Polish SMT achieving \textbf{BLEU 69.10}).\\[1pt]
     \impact{20\% reduction in human-hours for earnings call processing, automated extraction from millions of documents} [\href{https://drive.google.com/file/d/1nF485POZoE2YsYuQHdvUHO1GbwkQUDfL/view}{\faFile}]
 \end{projectdesc}
 
@@ -254,7 +245,7 @@
 \end{projectentry}
 
 \begin{projectdesc}
-    Led team of 3 engineers on Document Screening: built autosuggestion and concept similarity systems. Created FingerPrinter deduplication service (10$\times$ response improvement: 1000ms$\rightarrow$100ms). Architected Formula Lookup using distributed trie and n-gram language models on Spark.\\[1pt]
+    Led \textbf{team of 3 engineers} on Document Screening: built autosuggestion and concept similarity systems. Created FingerPrinter deduplication service (\textbf{10$\times$ response improvement: 1000ms$\rightarrow$100ms}). Architected Formula Lookup using distributed trie and n-gram language models on Spark.\\[1pt]
     \impact{Improved formula ranking from 5.6 to 2.3, 66\% faster document processing, powered StreetAccount trending news}
 \end{projectdesc}
 
@@ -295,15 +286,17 @@
 \smallersection
 
 \begingroup
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.1}
-\begin{tabular}{@{} l l @{}}
-\textbf{Languages} & Python $\cdot$ Java $\cdot$ C/C++ $\cdot$ Bash $\cdot$ SQL \\
-\textbf{ML/AI} & LangChain $\cdot$ RAG $\cdot$ LLM Guardrails $\cdot$ Embeddings $\cdot$ CLIP $\cdot$ PyTorch $\cdot$ TensorFlow $\cdot$ A/B Testing $\cdot$ Uncertainty Estimation $\cdot$ Monitoring \\
-\textbf{Data \& Infra} & PySpark $\cdot$ Databricks $\cdot$ MLflow $\cdot$ Metaflow $\cdot$ FastAPI $\cdot$ Django $\cdot$ Docker $\cdot$ Kubernetes $\cdot$ Terraform \\
-\textbf{Cloud \& CI/CD} & AWS (S3, EC2, SageMaker) $\cdot$ GitLab CI $\cdot$ W\&B $\cdot$ Pinecone \\
-\textbf{Leadership} & System Design $\cdot$ Technical Interviews $\cdot$ Mentoring $\cdot$ RFC Authorship $\cdot$ Cross-team Coordination \\
-\end{tabular}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+\newcommand{\skilllabel}[1]{\textbf{\color{accentcolor}#1}}
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+\skilllabel{Languages} & Python $\cdot$ Java $\cdot$ C/C++ $\cdot$ Bash $\cdot$ SQL \\
+\skilllabel{LLM \& GenAI} & LangChain $\cdot$ RAG $\cdot$ LLM Guardrails $\cdot$ Embeddings $\cdot$ Vector DBs (Pinecone) $\cdot$ CLIP \\
+\skilllabel{Classical ML} & PyTorch $\cdot$ TensorFlow $\cdot$ A/B Testing $\cdot$ Uncertainty Estimation $\cdot$ Model Monitoring \\
+\skilllabel{Data \& Infra} & PySpark $\cdot$ Databricks $\cdot$ MLflow $\cdot$ Metaflow $\cdot$ FastAPI $\cdot$ Django $\cdot$ Docker $\cdot$ Kubernetes $\cdot$ Terraform \\
+\skilllabel{Cloud \& CI/CD} & AWS (S3, EC2, SageMaker) $\cdot$ GitLab CI $\cdot$ Weights \& Biases \\
+\skilllabel{Leadership} & System Design $\cdot$ Technical Interviews $\cdot$ Mentoring $\cdot$ RFC Authorship $\cdot$ Cross-team Coordination \\
+\end{tabularx}
 \endgroup
 
 \normalsizesection
