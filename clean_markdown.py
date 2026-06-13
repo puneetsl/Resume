@@ -10,12 +10,13 @@ with open("resume_raw.md", "r") as f:
 
 # Create a prompt for GPT-4
 prompt = f"""
-Please clean up this LaTeX-to-Markdown converted resume. 
+Please clean up this LaTeX-to-Markdown converted resume.
 1. Fix any formatting issues
 2. Ensure proper Markdown syntax
 3. Maintain the structure and hierarchy
 4. Remove any LaTeX artifacts or weird formatting
 5. Keep the content exactly the same, just improve the formatting
+6. PRESERVE ALL DATES AND YEARS exactly as they appear (e.g., Education years like 2014 and 2010, employment date ranges). Do not drop or summarize them.
 
 IMPORTANT: Please obfuscate sensitive information in the following way:
 - Replace email addresses with the format: username [dot] domain [at] tld

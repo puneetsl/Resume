@@ -141,7 +141,7 @@
 \begin{minipage}[t]{0.6\textwidth}
     \vspace{0pt}
     \fontsize{24pt}{28pt}\selectfont\textbf{\color{namecolor}Puneet Ludu}\\[5pt]
-    {\small ML Engineer \& Tech Lead $\cdot$ 13+ years in ML/AI systems}\\[3pt]
+    {\small ML Engineer \& Tech Lead $\cdot$ Production ML \& LLM Reliability $\cdot$ 13+ yrs}\\[3pt]
     \footnotesize puneet.ludu@gmail.com | New York, NY | +1-(716) 867-4344 | \href{https://puneet.io}{puneet.io}
 \end{minipage}%
 \begin{minipage}[t]{0.4\textwidth}
@@ -174,6 +174,16 @@
     \impact{POC $\rightarrow$ shipped product powering agent pricing decisions; foundation for new agent revenue products}
 \end{projectdesc}
 
+% Zestimate Customer Care Agent + Reliability Infrastructure (shipped LLM)
+\begin{projectentry}
+    \projicon{\faRobot} \textbf{Zestimate Customer Care Agent + Reliability Infrastructure} \tech{React, LangChain, FastAPI} \approach{RAG Grounding + Output Validation + Deflection KPI}
+\end{projectentry}
+
+\begin{projectdesc}
+    Designed and shipped the first LLM assistant deployed to Zillow customer support: personalized Zestimate explanations grounded in real valuation data. Built RAG pipeline that constrains the agent to answer from actual Zestimate features and values rather than free-form generation; layered output validation with schema and range checks to catch out-of-distribution responses before they reach customers. Deployed with deflection rate tracked as the primary production KPI.\\[1pt]
+    \impact{First LLM tool deployed to Zillow customer care; production-hardened against hallucination via grounding and output validation}
+\end{projectdesc}
+
 % Active Listing Comps - Built from ground up
 \begin{projectentry}
     \projicon{\faDatabase} \textbf{Active Listing Comps Engine} \tech{Apache Spark, Metaflow, H3 Geospatial} \approach{Similarity Scoring + Batch/REST APIs}
@@ -194,14 +204,14 @@
     \impact{\$500K+ combined annual savings, 61\% alert reduction (641$\rightarrow$249 YoY)}
 \end{projectdesc}
 
-% AI/ML Initiatives - Multimodal Explainability → Agentic AI
+% Multimodal Embeddings & Explainable Valuation (prototypes)
 \begin{projectentry}
-    \projicon{\faBrain} \textbf{AI/ML Initiatives (In Progress)} \tech{PyTorch, CLIP, LangChain, Databricks} \approach{Multimodal Explainability $\rightarrow$ Agentic AI}
+    \projicon{\faBrain} \textbf{Multimodal Embeddings \& Explainable Valuation} \tech{PyTorch, CLIP, Databricks} \approach{DualLossAutoEncoder + Per-feature Attribution}
 \end{projectentry}
 
 \begin{projectdesc}
-    Built LLM-powered customer care agent (React + LangChain): first AI assistant deployed to Zillow customer support for personalized Zestimate explanations. Leading Image Embeddings project: experimenting with DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration. Prototyping explainable valuation architecture to produce per-feature dollar-level contributions for downstream AI agents. Led core Zestimate neural network ETL pipeline migration to Databricks; identified and resolved 8x latency and 10x cost regression before production deployment.\\[1pt]
-    \impact{First LLM tool deployed to customer care; building multimodal and explainability infrastructure for next-generation valuation products}
+    Leading Image Embeddings project: experimenting with DualLossAutoEncoder to predict property condition from CLIP embeddings (3.3M listings) for Zestimate integration. Prototyping explainable valuation architecture to produce per-feature dollar-level contributions for downstream AI agents. Led core Zestimate neural network ETL pipeline migration to Databricks; identified and resolved 8x latency and 10x cost regression before production deployment.\\[1pt]
+    \impact{Building multimodal and explainability infrastructure for next-generation valuation products}
 \end{projectdesc}
 
 % Mentorship & Technical Leadership
@@ -213,7 +223,7 @@
     Managed summer intern (2023): designed project plan, weekly check-ins, received ``strongly favorable'' feedback. Mentored 4+ engineers across many projects, deployments, and onboardings. Created RFC templates, Stacked MR best practices etc. adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.\\[1pt]
 \end{projectdesc}
 
-\begin{resumeentry}{Machine Learning Engineer}{May 2020 - Sep 2021}{Match Group (OkCupid)}{New York City}{1.5Y}
+\begin{resumeentry}{Machine Learning Engineer}{May 2020 -- Sep 2021}{Match Group (OkCupid)}{New York City}{1.5Y}
 \end{resumeentry}
 
 \begin{projectentry}
@@ -225,7 +235,7 @@
     \impact{6\% overall revenue increase through A/B tested pricing models}
 \end{projectdesc}
 
-\begin{resumeentry}{ML Engineer $\rightarrow$ Senior ML Engineer}{Apr 2015 - May 2020}{FactSet}{New York City}{5Y}
+\begin{resumeentry}{ML Engineer $\rightarrow$ Senior ML Engineer}{Apr 2015 -- May 2020}{FactSet}{New York City}{5Y}
 \end{resumeentry}
 
 % Combining NLP/ML projects for financial data extraction
@@ -257,7 +267,7 @@
     Established engineering best practices: Jenkins CI, comprehensive test suites, documentation standards. Mentored new hires and junior engineers. FingerPrinter became the model Java project within the ML group.\\[1pt]
 \end{projectdesc}
 
-\begin{resumeentry}{ML Research Engineer}{July 2011 - July 2013}{\href{https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre}{Tata Research Development and Design Centre}}{India}{2Y}
+\begin{resumeentry}{ML Research Engineer}{Jul 2011 -- Jul 2013}{\href{https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre}{Tata Research Development and Design Centre}}{India}{2Y}
 \end{resumeentry}
 
 \begin{projectentry}
@@ -289,7 +299,7 @@
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{@{} l l @{}}
 \textbf{Languages} & Python $\cdot$ Java $\cdot$ C/C++ $\cdot$ Bash $\cdot$ SQL \\
-\textbf{ML/AI} & PyTorch $\cdot$ TensorFlow $\cdot$ CLIP $\cdot$ LangChain $\cdot$ RAG $\cdot$ A/B Testing $\cdot$ Uncertainty Estimation $\cdot$ Monitoring \\
+\textbf{ML/AI} & LangChain $\cdot$ RAG $\cdot$ LLM Guardrails $\cdot$ Embeddings $\cdot$ CLIP $\cdot$ PyTorch $\cdot$ TensorFlow $\cdot$ A/B Testing $\cdot$ Uncertainty Estimation $\cdot$ Monitoring \\
 \textbf{Data \& Infra} & PySpark $\cdot$ Databricks $\cdot$ MLflow $\cdot$ Metaflow $\cdot$ FastAPI $\cdot$ Django $\cdot$ Docker $\cdot$ Kubernetes $\cdot$ Terraform \\
 \textbf{Cloud \& CI/CD} & AWS (S3, EC2, SageMaker) $\cdot$ GitLab CI $\cdot$ W\&B $\cdot$ Pinecone \\
 \textbf{Leadership} & System Design $\cdot$ Technical Interviews $\cdot$ Mentoring $\cdot$ RFC Authorship $\cdot$ Cross-team Coordination \\
