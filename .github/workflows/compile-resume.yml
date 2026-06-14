@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc python3-pip
-          pip install openai
+          pip install google-genai
 
       - name: Get version number
         id: get_version
@@ -76,7 +76,7 @@ jobs:
 
       - name: Convert LaTeX to Markdown and clean up
         env:
-          GH_KEY: ${{ secrets.GH_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           # Convert LaTeX to Markdown using Pandoc
           pandoc -s resume.tex -o resume_raw.md

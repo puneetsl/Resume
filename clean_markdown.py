@@ -1,14 +1,13 @@
 import os
-from openai import OpenAI
+import sys
 
-# Set OpenAI API key from GitHub Actions secret
-client = OpenAI(api_key=os.environ.get("GH_KEY"))
+from google import genai
+from google.genai import types
 
 # Read the raw markdown
 with open("resume_raw.md", "r") as f:
     raw_markdown = f.read()
 
-# Create a prompt for GPT-4
 prompt = f"""
 Please clean up this LaTeX-to-Markdown converted resume.
 1. Fix any formatting issues
@@ -21,34 +20,34 @@ Please clean up this LaTeX-to-Markdown converted resume.
 IMPORTANT: Please obfuscate sensitive information in the following way:
 - Replace email addresses with the format: username [dot] domain [at] tld
   Example: john.doe@gmail.com → john [dot] doe [at] gmail [dot] com
-- Replace phone numbers with obfuscation like 
+- Replace phone numbers with obfuscation like
   Example: +1-(123) 456-7890 → +1-(123) four five six seven eight nine zero
+
+Return ONLY the cleaned markdown — no preamble, no explanation, no code fences.
 
 Here's the raw markdown:
 
 {raw_markdown}
 """
 
-# Call OpenAI API
-response = client.chat.completions.create(
-    model="gpt-4",
-    messages=[
-        {
-            "role": "system",
-            "content": (
-                "You are a helpful assistant that converts LaTeX resumes "
-                "to clean Markdown format and obfuscates sensitive info."
-            ),
-        },
-        {"role": "user", "content": prompt},
-    ],
-    temperature=0.3,
-    max_tokens=4000,
-)
+# Fail-soft: if Gemini call fails for any reason, fall back to raw markdown
+# so the workflow always produces a README and never blocks the PDF release.
+try:
+    client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.3,
+            max_output_tokens=8000,
+        ),
+    )
+    cleaned_markdown = response.text
+    if not cleaned_markdown:
+        raise RuntimeError("Gemini returned empty content")
+except Exception as e:
+    print(f"Gemini cleanup failed ({e}); falling back to raw markdown.", file=sys.stderr)
+    cleaned_markdown = raw_markdown
 
-# Get the cleaned markdown
-cleaned_markdown = response.choices[0].message.content
-
-# Write the cleaned markdown to a file
 with open("resume.md", "w") as f:
     f.write(cleaned_markdown)
