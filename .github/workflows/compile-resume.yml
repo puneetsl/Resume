@@ -79,11 +79,14 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VERSION: ${{ env.VERSION }}
         run: |
-          # Pre-process: \sectionbox{X} -> \section*{X} so Pandoc emits proper
-          # Markdown headers instead of losing them in macro expansion (the
-          # macro body uses \hbox to \textwidth which Pandoc can't parse).
-          # The original resume.tex stays untouched.
-          sed 's/\\sectionbox{\([^}]*\)}/\\section*{\1}/g' resume.tex > resume_for_pandoc.tex
+          # Pre-process resume.tex so Pandoc sees only commands it handles
+          # reliably across versions. The original file is untouched.
+          #   - \sectionbox{X}    -> \section*{X}       (proper Markdown headers)
+          #   - \yearsright{X}    -> \textbf{X}         (year badge — \yearsright
+          #     is a custom macro that some Pandoc versions drop silently)
+          sed -e 's/\\sectionbox{\([^}]*\)}/\\section*{\1}/g' \
+              -e 's/\\yearsright{\([^}]*\)}/\\textbf{\1}/g' \
+              resume.tex > resume_for_pandoc.tex
 
           # --wrap=none keeps sentences on one line; -t gfm emits GitHub-
           # flavored Markdown (pipe tables instead of Pandoc simple tables);
