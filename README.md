@@ -1,6 +1,6 @@
 # Puneet Ludu — Resume
 
-[![Latest](https://img.shields.io/badge/Latest-v11.1-3C2D41?style=flat-square)](puneet_ludu_resume_latest.pdf) [![Download PDF](https://img.shields.io/badge/Download-PDF-005FAF?style=flat-square&logo=adobeacrobatreader&logoColor=white)](puneet_ludu_resume_latest.pdf) [![All versions](https://img.shields.io/badge/All_versions-folder-lightgrey?style=flat-square)](versions/)
+[![Latest](https://img.shields.io/badge/Latest-v11.2-3C2D41?style=flat-square)](puneet_ludu_resume_latest.pdf) [![Download PDF](https://img.shields.io/badge/Download-PDF-005FAF?style=flat-square&logo=adobeacrobatreader&logoColor=white)](puneet_ludu_resume_latest.pdf) [![All versions](https://img.shields.io/badge/All_versions-folder-lightgrey?style=flat-square)](versions/)
 
 ---
 
@@ -18,7 +18,7 @@ puneet [dot] ludu [at] gmail [dot] com · New York, NY · +1-(716) eight six sev
 
 ## Experience 13+ years
 
-**Zillow (Zestimate)**, Machine Learning Engineer (Tech Lead), *Sep 2021 – Present*, Remote  
+**Zillow (Zestimate)**, Machine Learning Engineer (Tech Lead), *Sep 2021 – Present*, Remote **4Y**  
 
 **[Listing IQ: Interactive CMA Platform](https://grow.zillow.com/listingIQ-comparative-market-analysis)** *(Django, DocumentDB, PyTorch)* [Real-time Valuations + Embeddings]
 
@@ -49,14 +49,14 @@ Leading Image Embeddings project: experimenting with DualLossAutoEncoder to pred
 
 Managed summer intern (2023): designed project plan, weekly check-ins, received **“strongly favorable”** feedback. Mentored **4+ engineers** across many projects, deployments, and onboardings. Created **RFC templates, Stacked MR best practices** etc. adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.  
 
-**Match Group (OkCupid)**, Machine Learning Engineer, *May 2020 – Sep 2021*, New York City  
+**Match Group (OkCupid)**, Machine Learning Engineer, *May 2020 – Sep 2021*, New York City **1.5Y**  
 
 **Discount Optimization** *(Python, Keras, TensorFlow, Weights and Biases)* [[Wide&Deep](https://blog.research.google/2016/06/wide-deep-learning-better-together-with.html)]
 
 Owned **end-to-end ML pipeline** for subscription discount optimization: feature engineering, model training, A/B testing, deployment, and production monitoring. Discovered high prediction variance across model runs; designed **ensemble uncertainty estimation using 100-model bagging** to quantify and stabilize outputs for production deployment.  
 **Impact:** *6% overall revenue increase through A/B tested pricing models*
 
-**FactSet**, ML Engineer → Senior ML Engineer, *Apr 2015 – May 2020*, New York City  
+**FactSet**, ML Engineer → Senior ML Engineer, *Apr 2015 – May 2020*, New York City **5Y**  
 
 **ML-Powered Financial Data Extraction** *(Python, TensorFlow, Keras, Sagemaker)* [CNN, ELMo, BiLSTM]
 
@@ -72,7 +72,7 @@ Led **team of 3 engineers** on Document Screening: built autosuggestion and conc
 
 Established engineering best practices: Jenkins CI, comprehensive test suites, documentation standards. Mentored new hires and junior engineers. FingerPrinter became the model Java project within the ML group.  
 
-**[Tata Research Development and Design Centre](https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre)**, ML Research Engineer, *Jul 2011 – Jul 2013*, India  
+**[Tata Research Development and Design Centre](https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre)**, ML Research Engineer, *Jul 2011 – Jul 2013*, India **2Y**  
 
 **Event Detection in Time Series** *(Java, Python, RapidMiner)* [SVM - RBF] 
 
