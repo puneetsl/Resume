@@ -1,6 +1,6 @@
 # Puneet Ludu's Resume
 
-##### Latest Version: v10.9 
+##### Latest Version: v11.0 
 [![Resume PDF](https://img.shields.io/badge/Resume-PDF-blue.svg)](puneet_ludu_resume_latest.pdf)
 
 ## Resume in Markdown
@@ -8,7 +8,7 @@
 **Puneet Ludu**\
 **ML Engineer & Tech Lead**\
 Production ML & LLM Reliability $\cdot$ 13+ years\
-puneet.ludu@gmail.com $\cdot$ New York, NY $\cdot$ +1-(716) 867-4344
+puneet [dot] ludu [at] gmail [dot] com $\cdot$ New York, NY $\cdot$ +1-(716) eight six seven four three four four
 $\cdot$ [puneet.io](https://puneet.io)
 
  [github.com/puneetsl](https://github.com/puneetsl)\
