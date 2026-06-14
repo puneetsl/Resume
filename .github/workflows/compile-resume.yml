@@ -77,42 +77,24 @@ jobs:
       - name: Convert LaTeX to Markdown and clean up
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VERSION: ${{ env.VERSION }}
         run: |
-          # Convert LaTeX to Markdown using Pandoc
-          pandoc -s resume.tex -o resume_raw.md
+          # Pre-process: \sectionbox{X} -> \section*{X} so Pandoc emits proper
+          # Markdown headers instead of losing them in macro expansion (the
+          # macro body uses \hbox to \textwidth which Pandoc can't parse).
+          # The original resume.tex stays untouched.
+          sed 's/\\sectionbox{\([^}]*\)}/\\section*{\1}/g' resume.tex > resume_for_pandoc.tex
 
-          # Run the Python script to clean up the Markdown and obfuscate sensitive information
+          # --wrap=none keeps sentences on one line; -t gfm emits GitHub-
+          # flavored Markdown (pipe tables instead of Pandoc simple tables);
+          # --shift-heading-level-by=1 demotes \section* to ## so the README's
+          # top-level "# Puneet Ludu — Resume" stays the only h1.
+          pandoc -s resume_for_pandoc.tex --wrap=none -t gfm --shift-heading-level-by=1 -o resume_raw.md
+          rm resume_for_pandoc.tex
+
+          # Artifact cleanup, PII obfuscation, optional Gemini polish; writes
+          # both resume.md and README.md.
           python clean_markdown.py
-
-      - name: Create README.md with Markdown content and PDF link
-        run: |
-          # Extract basic information from LaTeX file
-          NAME=$(grep -oP '\\textbf{\\color{namecolor}Puneet Ludu}' resume.tex | sed 's/\\textbf{\\color{namecolor}//g' | sed 's/}//g')
-
-          # Create README content
-          cat > README.md << EOF
-          # $NAME's Resume
-
-          ##### Latest Version: v${{ env.VERSION }} 
-          [![Resume PDF](https://img.shields.io/badge/Resume-PDF-blue.svg)](puneet_ludu_resume_latest.pdf)
-
-          ## Resume in Markdown
-
-          $(cat resume.md)
-
-          ## Download Options
-
-          - [Download Latest PDF](puneet_ludu_resume_latest.pdf)
-          - [View on GitHub](https://github.com/puneetsl/resume/blob/main/puneet_ludu_resume_latest.pdf)
-
-          ## Previous Versions
-
-          All previous versions are available in the [versions](versions/) directory.
-
-          ## Compilation Instructions
-
-          For instructions on how to compile this resume, see [RUNSTEPS.md](RUNSTEPS.md).
-          EOF
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
