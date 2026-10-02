@@ -1,6 +1,6 @@
 # Puneet Ludu — Resume
 
-[![Latest](https://img.shields.io/badge/Latest-v11.3-3C2D41?style=flat-square)](puneet_ludu_resume_latest.pdf) [![Download PDF](https://img.shields.io/badge/Download-PDF-005FAF?style=flat-square&logo=adobeacrobatreader&logoColor=white)](puneet_ludu_resume_latest.pdf) [![All versions](https://img.shields.io/badge/All_versions-folder-lightgrey?style=flat-square)](versions/)
+[![Latest](https://img.shields.io/badge/Latest-v11.4-3C2D41?style=flat-square)](puneet_ludu_resume_latest.pdf) [![Download PDF](https://img.shields.io/badge/Download-PDF-005FAF?style=flat-square&logo=adobeacrobatreader&logoColor=white)](puneet_ludu_resume_latest.pdf) [![All versions](https://img.shields.io/badge/All_versions-folder-lightgrey?style=flat-square)](versions/)
 
 ---
 
@@ -19,15 +19,15 @@ No sponsorship required (LPR)
 
 **Next-Gen Zestimate: Explainable Valuation** (PyTorch, Databricks)
 
-Led architecture experiments and production evaluation for an explainable valuation model with per-feature dollar contributions; improved accuracy through learned comp weighting and evaluated explanation stability nationally.
+Led architecture experiments and production evaluation for Zillow’s first explainable Zestimate model; improved accuracy through learned comp weighting and evaluated explanation stability nationally.
 
-**Impact:** Building Zillow’s first explainable Zestimate, with per-feature dollar attribution for downstream valuation products.
+**Impact:** Per-feature dollar explanations built into the valuation model.
 
 **Property Condition & Quality Image Embeddings** (PyTorch, Databricks, CLIP)
 
-Led research and model refinement for CLIP-based property scoring on 1.95M homes: **${\sim}$70% five-class accuracy and ${\sim}$0.91 weighted AUC** on held-out validation. Scored 16.5M home–listing combinations in staging.
+Led research and model refinement for CLIP-based property condition and quality scoring on 1.95M homes, achieving **${\sim}$70% five-class accuracy and ${\sim}$0.91 weighted AUC**.
 
-**Impact:** Scoring pipeline in production; Zestimate integration pending.
+**Impact:** Production scoring pipeline; scored 16.5M home–listing pairs.
 
 **Zestimate Customer Care Agent** (LangChain, FastAPI)
 
@@ -35,11 +35,11 @@ Built one of Zillow’s first agentic AI tools for customer care, with RAG and r
 
 Encoded expert triage as agent tools; reduced hallucinations with custom judges, curated context, and bounded responses.
 
-Answered ${\sim}$50–60% of questions in internal evaluation. Piloted with care reps reviewing explanations before customer use.
+Answered ${\sim}$50–60% of evaluated questions; piloted with customer care representatives.
 
 **[Listing IQ: Interactive CMA Platform](https://grow.zillow.com/listingIQ-comparative-market-analysis)** (Django, DocumentDB, H3 Geospatial)
 
-Led two engineers from interactive CMA prototype through handoff to ShowingTime, owning the ML architecture and incorporating seller-agent feedback; productionized the real-time ML services.
+Led two engineers and an intern from CMA prototype through handoff to ShowingTime; owned ML architecture, incorporated seller-agent feedback, and productionized real-time services.
 
 Moved comp selection from batch to real time using geospatial retrieval and ranking. Property edits update comps and valuations immediately; full reports in under 15 seconds.
 
@@ -49,11 +49,11 @@ Moved comp selection from batch to real time using geospatial retrieval and rank
 
 Architected the daily similarity-ranking pipeline for 3M+ active listings behind Showcase’s Listing Performance Dashboard.
 
-Built deduplication and lifecycle tracking across active, sold, and removed listings to maintain an accurate comp universe.
+Built listing deduplication and lifecycle tracking to maintain accurate comp sets.
 
 Led a data source migration that expanded listing coverage from **90% to 98.5%**.
 
-**Impact:95% reduction in listing-visibility complaints** following the coverage improvement.
+**Impact:95% reduction in listing-visibility complaints**.
 
 **Infrastructure & Engineering Leadership** (FastAPI, AWS, Terraform, Databricks, PySpark)
 
@@ -63,17 +63,17 @@ Led legacy valuation retirement and Redis-to-feature-store migration; discovered
 
 Led training ETL migration from Metaflow/Kubernetes to Databricks PySpark. Platform-specific optimization reversed an initial 8× latency and 10× cost regression, restoring production parity.
 
-**Impact:$350K annual savings** from decommissioning the legacy valuation stack, including Redis.
+**Impact:$350K annual savings** from retiring the legacy valuation stack.
 
 **Mentorship & Technical Leadership**
 
-Managed a summer intern (2023) and mentored 4+ engineers; authored RFCs and architecture docs adopted as reference patterns outside the team; conducted technical interviews.
+Managed an intern and mentored 4+ engineers; authored RFCs and architecture guidance adopted outside the team.
 
 **Discount Optimization** (Python, Keras, TensorFlow, Weights & Biases)
 
-Owned the subscription discount optimization pipeline: feature engineering under PII constraints, model training, A/B testing, deployment, and production monitoring.
+Owned subscription discount optimization from privacy-constrained feature engineering through A/B testing and production.
 
-Diagnosed epistemic uncertainty across random seeds and built a 100-model ensemble to stabilize discount recommendations across retraining runs.
+Built a 100-model ensemble to reduce epistemic uncertainty and stabilize discount recommendations across retraining.
 
 **Impact:6% revenue increase** vs. baseline in A/B testing.
 
@@ -83,15 +83,15 @@ Led development of a speaker identification system for earnings calls using spec
 
 Built private company fact extraction pipeline across 1.6M websites using ELMo/BiLSTM; rewrote the language identification service.
 
-Led machine translation infrastructure for financial content (Polish SMT achieving BLEU 69.10).
+Led financial machine-translation infrastructure; achieved 69.1 BLEU for Polish.
 
-**Impact:**% reduction in annotation time in a limited production rollout of earnings-call speaker identification 
+**Impact:**% less annotation time in an initial production rollout. 
 
 **Financial Document Search & Ranking Systems** (Apache Spark, Java, Python)
 
 Led team of 3 engineers on Document Screening: built autosuggestion and concept similarity systems.
 
-Built the FingerPrinter deduplication service, reducing response time from 1000ms to 100ms (10×).
+Built a document deduplication service, reducing response latency 10×.
 
 Architected Formula Lookup using distributed trie and n-gram language models on Spark.
 
