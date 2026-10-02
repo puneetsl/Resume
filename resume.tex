@@ -135,15 +135,15 @@
     \projicon{\faProjectDiagram} \textbf{Next-Gen Zestimate: Explainable Valuation} \tech{PyTorch, Databricks} \approach{Glass-box Modeling}
 \end{projectentry}
 \begin{projectdesc}
-    \pbullet{Led architecture experiments and production evaluation for an explainable valuation model with per-feature dollar contributions; improved accuracy through learned comp weighting and evaluated explanation stability nationally.}%
-    \item[]\impact{Building Zillow's first explainable Zestimate, with per-feature dollar attribution for downstream valuation products.}
+    \pbullet{Led architecture experiments and production evaluation for Zillow's first explainable Zestimate model; improved accuracy through learned comp weighting and evaluated explanation stability nationally.}%
+    \item[]\impact{Per-feature dollar explanations built into the valuation model.}
 \end{projectdesc}
 \begin{projectentry}
     \projicon{\faImages} \textbf{Property Condition \& Quality Image Embeddings} \tech{PyTorch, Databricks, CLIP}
 \end{projectentry}
 \begin{projectdesc}
-    \pbullet{Led research and model refinement for CLIP-based property scoring on 1.95M homes: \textbf{${\sim}$70\% five-class accuracy and ${\sim}$0.91 weighted AUC} on held-out validation. Scored 16.5M home--listing combinations in staging.}%
-    \item[]\impact{Scoring pipeline in production; Zestimate integration pending.}
+    \pbullet{Led research and model refinement for CLIP-based property condition and quality scoring on 1.95M homes, achieving \textbf{${\sim}$70\% five-class accuracy and ${\sim}$0.91 weighted AUC}.}%
+    \item[]\impact{Production scoring pipeline; scored 16.5M home--listing pairs.}
 \end{projectdesc}
 
 % 2. Customer Care Agent
@@ -153,7 +153,7 @@
 \begin{projectdesc}
     \pbullet{Built one of Zillow's first agentic AI tools for customer care, with RAG and real-time services exposing property history, features, and comps across ${\sim}$150M homes.}%
     \pbullet{Encoded expert triage as agent tools; reduced hallucinations with custom judges, curated context, and bounded responses.}%
-    \pbullet{Answered ${\sim}$50--60\% of questions in internal evaluation. Piloted with care reps reviewing explanations before customer use.}%
+    \pbullet{Answered ${\sim}$50--60\% of evaluated questions; piloted with customer care representatives.}%
 \end{projectdesc}
 
 % 3. Listing IQ
@@ -161,7 +161,7 @@
     \projicon{\faHome} \textbf{\href{https://grow.zillow.com/listingIQ-comparative-market-analysis}{Listing IQ: Interactive CMA Platform}} \tech{Django, DocumentDB, H3 Geospatial} \approach{Real-time Comps + Valuation}
 \end{projectentry}
 \begin{projectdesc}
-    \pbullet{Led two engineers from interactive CMA prototype through handoff to ShowingTime, owning the ML architecture and incorporating seller-agent feedback; productionized the real-time ML services.}%
+    \pbullet{Led two engineers and an intern from CMA prototype through handoff to ShowingTime; owned ML architecture, incorporated seller-agent feedback, and productionized real-time services.}%
     \pbullet{Moved comp selection from batch to real time using geospatial retrieval and ranking. Property edits update comps and valuations immediately; full reports in under 15 seconds.}%
     \item[]\impact{Shipped as Listing IQ CMA, bringing Zestimate valuation data into a commercial seller-agent product.}
 \end{projectdesc}
@@ -172,9 +172,9 @@
 \end{projectentry}
 \begin{projectdesc}
     \pbullet{Architected the daily similarity-ranking pipeline for 3M+ active listings behind Showcase's Listing Performance Dashboard.}%
-    \pbullet{Built deduplication and lifecycle tracking across active, sold, and removed listings to maintain an accurate comp universe.}%
+    \pbullet{Built listing deduplication and lifecycle tracking to maintain accurate comp sets.}%
     \pbullet{Led a data source migration that expanded listing coverage from \textbf{90\% to 98.5\%}.}%
-    \item[]\impact{\textbf{95\% reduction in listing-visibility complaints} following the coverage improvement.}
+    \item[]\impact{\textbf{95\% reduction in listing-visibility complaints}.}
 \end{projectdesc}
 
 % 5. Infrastructure
@@ -185,7 +185,7 @@
     \pbullet{Built a FastAPI reverse-proxy gateway decoupling downstream applications from model changes; designed for 20--40M req/day, with A/B testing support and a 99.5\% SLA.}%
     \pbullet{Led legacy valuation retirement and Redis-to-feature-store migration; discovered two undocumented downstream consumers, rolled back, and revised the rollout.}%
     \pbullet{Led training ETL migration from Metaflow/Kubernetes to Databricks PySpark. Platform-specific optimization reversed an initial 8$\times$ latency and 10$\times$ cost regression, restoring production parity.}%
-    \item[]\impact{\textbf{\$350K annual savings} from decommissioning the legacy valuation stack, including Redis.}
+    \item[]\impact{\textbf{\$350K annual savings} from retiring the legacy valuation stack.}
 \end{projectdesc}
 
 % 6. Mentorship
@@ -193,7 +193,7 @@
     \projicon{\faUsers} \textbf{Mentorship \& Technical Leadership}
 \end{projectentry}
 \begin{projectdesc}
-    \item[] Managed a summer intern (2023) and mentored 4+ engineers; authored RFCs and architecture docs adopted as reference patterns outside the team; conducted technical interviews.
+    \item[] Managed an intern and mentored 4+ engineers; authored RFCs and architecture guidance adopted outside the team.
 \end{projectdesc}
 \end{companybox}
 
@@ -202,8 +202,8 @@
     \projicon{\faTag} \textbf{Discount Optimization} \tech{Python, Keras, TensorFlow, Weights \& Biases} \approach{\href{https://blog.research.google/2016/06/wide-deep-learning-better-together-with.html}{Wide\&Deep} + Uncertainty Estimation}
 \end{projectentry}
 \begin{projectdesc}
-    \pbullet{Owned the subscription discount optimization pipeline: feature engineering under PII constraints, model training, A/B testing, deployment, and production monitoring.}%
-    \pbullet{Diagnosed epistemic uncertainty across random seeds and built a 100-model ensemble to stabilize discount recommendations across retraining runs.}%
+    \pbullet{Owned subscription discount optimization from privacy-constrained feature engineering through A/B testing and production.}%
+    \pbullet{Built a 100-model ensemble to reduce epistemic uncertainty and stabilize discount recommendations across retraining.}%
     \item[]\impact{\textbf{6\% revenue increase} vs.\ baseline in A/B testing.}
 \end{projectdesc}
 \end{companybox}
@@ -220,8 +220,8 @@
 \begin{projectdesc}
     \pbullet{Led development of a speaker identification system for earnings calls using spectrogram-based CNNs.}%
     \pbullet{Built private company fact extraction pipeline across 1.6M websites using ELMo/BiLSTM; rewrote the language identification service.}%
-    \pbullet{Led machine translation infrastructure for financial content (Polish SMT achieving BLEU 69.10).}%
-    \item[]\impact{20\% reduction in annotation time in a limited production rollout of earnings-call speaker identification} [\href{https://drive.google.com/file/d/1nF485POZoE2YsYuQHdvUHO1GbwkQUDfL/view}{\faFile}]
+    \pbullet{Led financial machine-translation infrastructure; achieved 69.1 BLEU for Polish.}%
+    \item[]\impact{20\% less annotation time in an initial production rollout.} [\href{https://drive.google.com/file/d/1nF485POZoE2YsYuQHdvUHO1GbwkQUDfL/view}{\faFile}]
 \end{projectdesc}
 
 \begin{projectentry}
@@ -229,7 +229,7 @@
 \end{projectentry}
 \begin{projectdesc}
     \pbullet{Led team of 3 engineers on Document Screening: built autosuggestion and concept similarity systems.}%
-    \pbullet{Built the FingerPrinter deduplication service, reducing response time from 1000ms to 100ms (10$\times$).}%
+    \pbullet{Built a document deduplication service, reducing response latency 10$\times$.}%
     \pbullet{Architected Formula Lookup using distributed trie and n-gram language models on Spark.}%
     \item[]\impact{Formula ranking improved from 5.6 to 2.3; document processing was 66\% faster. Systems supported StreetAccount trending news.}
 \end{projectdesc}
