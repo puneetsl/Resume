@@ -266,3 +266,6 @@ TSWLatexianTemp*
 # all files that starts with resume in main directory except resume.tex
 /resume*
 !/resume.tex
+
+## Interview notes for resume rewrite — contains non-public internal figures. Never publish.
+resume-notes.md

@@ -18,30 +18,22 @@
 \usepackage{setspace}
 \usepackage{tikz}
 \usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
 \usepackage{ragged2e}
 \usepackage{needspace}
 
-% Set page margins - UPDATED: reduced margins to use more horizontal space
+% Set page margins
 \geometry{left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
 
 % Define colors
 \definecolor{namecolor}{RGB}{20, 25, 30}
-\definecolor{accentcolor}{RGB}{60, 45, 65}        % warm graphite — subtle near-black with warm undertone, clearly non-blue
+\definecolor{accentcolor}{RGB}{60, 45, 65}        % warm graphite
 \definecolor{sectioncolor}{RGB}{60, 45, 65}
-\definecolor{linkcolor}{RGB}{0, 95, 175}          % saturated cool blue — unambiguously a link
+\definecolor{linkcolor}{RGB}{0, 95, 175}          % saturated cool blue
 \definecolor{impactcolor}{RGB}{70, 70, 70}
 \definecolor{yearcolor}{RGB}{120, 120, 120}
 \definecolor{taglinecolor}{RGB}{90, 90, 90}
 \definecolor{rulecolor}{RGB}{200, 200, 205}
-
-% Chart colors
-\definecolor{chartblue}{RGB}{54, 162, 235}      % Architecture
-\definecolor{chartyellow}{RGB}{255, 206, 86}    % MLOps
-\definecolor{chartorange}{RGB}{255, 159, 64}    % Leadership
-\definecolor{chartgreen}{RGB}{138, 194, 74}     % Prompt Engineering
-\definecolor{chartred}{RGB}{255, 99, 132}       % Coding
-\definecolor{chartpurple}{RGB}{153, 102, 255}   % Modeling
-\definecolor{chartteal}{RGB}{75, 192, 192}      % Data Eng.
 
 % Configure hyperref
 \hypersetup{
@@ -56,291 +48,249 @@
 
 % Set paragraph spacing
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{3pt}
+\setlength{\parskip}{0pt}
 
 % Custom font size commands
 \newcommand{\normalsizesection}{\normalsize}
-\newcommand{\smallersection}{\small}
+\newcommand{\smallersection}{\fontsize{9.1}{10.9}\selectfont}
 \newcommand{\smallestsection}{\footnotesize}
 \newcommand{\tinyfootnote}{\fontsize{8.7pt}{10.4pt}\selectfont}
 
-% Configure section formatting with colored box
+% Configure section formatting
 \titleformat{\section}
     {\Large\bfseries\color{sectioncolor}}
     {}
     {0em}
     {}
-    
-\titlespacing{\section}{0pt}{8pt}{2pt}
 
-% Custom section: colored left bar + accent-colored title + thin underline
-\newcommand{\sectionbox}[1]{%
-    \vspace{0.5em}%
-    \noindent\hbox to \textwidth{{\color{accentcolor}\rule[-1pt]{4pt}{13pt}}\hspace{7pt}\textbf{\large\color{sectioncolor}#1}\hfil}\par
-    \vspace{1pt}
-    \noindent{\color{rulecolor}\rule{\textwidth}{0.4pt}}\par
-    \vspace{-2pt}
-}
+\titlespacing{\section}{0pt}{6pt}{1pt}
 
-% Custom commands
-\newcommand{\yearsright}[1]{{\footnotesize\bfseries\color{yearcolor} #1}}
-\newcommand{\impact}[1]{\textbf{\color{accentcolor}Impact:} \textit{#1}}
-\newcommand{\tech}[1]{\textit{(#1)}}
-\newcommand{\approach}[1]{[#1]}
-\newcommand{\entryspace}{\vspace{-1pt}}
 
-% Custom environment for resume entries with hierarchical structure
-\newenvironment{resumeentry}[5]{%
-    % Args: {title}{dates}{company}{location}{years}
-    % Renders: Company, Title, Dates ... Years
-    \noindent\if\relax\detokenize{#3}\relax\else\textbf{\color{accentcolor}#3}, \fi%
-    \if\relax\detokenize{#1}\relax\else#1, \fi%
-    \if\relax\detokenize{#2}\relax\else\textit{#2}, \fi%
-    \if\relax\detokenize{#4}\relax\else#4\fi%
-    \if\relax\detokenize{#5}\relax\else\hfill\yearsright{#5}\fi\\[-2pt]
-}{\vspace{1pt}}
-
-% Project entry with indentation and hierarchical structure
-\newenvironment{projectentry}{%
-    \leftskip=0.5cm
-    \par\noindent
-}{\par\leftskip=0cm\vspace{0pt}}
-
-% Project description with deeper indentation
-\newenvironment{projectdesc}{%
-    \leftskip=1.0cm
-    \footnotesize
-    \par\noindent
-}{\par\leftskip=0cm\smallersection\vspace{1pt}}
-
-% Link with icon
-\newcommand{\iconlink}[3]{%
-    #1~\href{#2}{#3}%
-}
-
-% Project icon - new command for project icons
-\newcommand{\projicon}[1]{%
-    {\small\color{accentcolor!75}#1}~%
-}
-
+% A single card system preserves employer and section boundaries.
+\tcbset{resumecard/.style={enhanced jigsaw,breakable,
+    colback=white,colbacktitle=gray!8,colframe=gray!35,coltitle=sectioncolor,
+    boxrule=0.4pt,boxsep=0pt,arc=2pt,left=7pt,right=7pt,
+    top=4pt,bottom=5pt,lefttitle=7pt,righttitle=7pt,
+    toptitle=4pt,bottomtitle=4pt,before skip=5pt,after skip=0pt}}
+\newcommand{\sectionbox}[1]{\begin{tcolorbox}[resumecard,breakable=false,
+    top=3pt,bottom=3pt,colback=gray!8]\fontsize{11.5}{13}\selectfont\bfseries\color{sectioncolor}#1\end{tcolorbox}}
+\newcommand{\yearsright}[1]{{\fontsize{9}{11}\selectfont\bfseries\color{accentcolor}#1}}
+\newcommand{\impact}[1]{\textbf{\color{accentcolor}Impact:}\enspace #1}
+\newcommand{\tech}[1]{{\fontsize{8.2}{10}\selectfont\color{taglinecolor}\enspace (#1)}}
+\newcommand{\approach}[1]{{\fontsize{8.2}{10}\selectfont\color{taglinecolor}\enspace [#1]}}
+\newcommand{\pbullet}[1]{\item #1}
+% Kept at the original five-argument signature.
+\newenvironment{resumeentry}[5]{\textbf{#3}\quad #1\hfill #2\par #4\hfill\yearsright{#5}}{\par}
+\newenvironment{projectentry}{\par\addvspace{5pt}\needspace{38pt}\begingroup\fontsize{9.7}{11.4}\selectfont\raggedright}{\par\endgroup\vspace{2pt}}
+\newenvironment{projectdesc}{\begingroup\fontsize{9.1}{10.9}\selectfont\raggedright
+  \begin{list}{{\color{taglinecolor}\textbullet}}{\setlength{\leftmargin}{15pt}\setlength{\labelwidth}{8pt}\setlength{\labelsep}{7pt}\setlength{\itemsep}{1pt}\setlength{\topsep}{0pt}\setlength{\parsep}{0pt}}}{\end{list}\endgroup}
+\newcommand{\iconlink}[3]{#1~\href{#2}{#3}}
+\newcommand{\projicon}[1]{\makebox[15pt][l]{\makebox[10pt][c]{\fontsize{9}{9}\selectfont\color{accentcolor!75}#1}}}
+\newenvironment{companybox}[1]{\begin{tcolorbox}[resumecard,title={#1},fonttitle={\fontsize{9.5}{11.5}\selectfont}]}{\end{tcolorbox}}
+\newenvironment{sectioncard}[1]{\begin{tcolorbox}[resumecard,breakable=false,colbacktitle=gray!16,title={\textbf{#1}},fonttitle={\fontsize{11.5}{13}\selectfont}]\fontsize{9.1}{10.9}\selectfont}{\end{tcolorbox}}
+% Explicit closed panels at the intentional page boundary avoid torn borders.
+\newenvironment{experiencepanel}[1]{\begin{tcolorbox}[resumecard,breakable=false,
+    colbacktitle=gray!16,left=3pt,right=3pt,top=3pt,bottom=3pt,
+    title={\textbf{#1}},fonttitle={\fontsize{11.5}{13}\selectfont}]}{\end{tcolorbox}}
+% Company, title, dates, location, explicit tenure.
+\newcommand{\employer}[5]{\textbf{#1}\hfill\yearsright{#5}\par
+    {\fontsize{9}{11}\selectfont #2\enspace$\cdot$\enspace #4\hfill #3}}
 % Begin document
 \begin{document}
+\emergencystretch=3em\hyphenpenalty=10000\exhyphenpenalty=10000
 
-% Header with side-by-side layout
-\begin{minipage}[t]{0.62\textwidth}
+% Header
+\begin{tcolorbox}[resumecard,breakable=false,before skip=0pt,top=7pt,bottom=7pt]
+\begin{minipage}[t]{0.62\linewidth}
     \vspace{0pt}
     \fontsize{26pt}{30pt}\selectfont\textbf{\color{namecolor}Puneet Ludu}\\[3pt]
     {\normalsize\bfseries\color{accentcolor}ML Engineer \& Tech Lead}\\[1pt]
-    {\small\color{taglinecolor}Production ML \& LLM Reliability $\cdot$ 13+ years}\\[4pt]
+    {\small\color{taglinecolor}Production ML $\cdot$ Applied AI + Agentic $\cdot$ 13+ years}\\[3pt]
     \footnotesize puneet.ludu@gmail.com $\cdot$ New York, NY $\cdot$ +1-(716) 867-4344 $\cdot$ \href{https://puneet.io}{puneet.io}
 \end{minipage}%
-\begin{minipage}[t]{0.38\textwidth}
+\begin{minipage}[t]{0.38\linewidth}
     \vspace{6pt}
     \raggedleft
-    \footnotesize{\color{accentcolor}\faGithub}~\href{https://github.com/puneetsl}{github.com/puneetsl}\\[1pt]
-    \footnotesize{\color{accentcolor}\faLinkedin}~\href{https://www.linkedin.com/in/puneetsl}{linkedin.com/in/puneetsl}\\[1pt]
-    \footnotesize{\color{accentcolor}\faKaggle}~\href{https://www.kaggle.com/puneetsl}{kaggle.com/puneetsl}\\[1pt]
-    \footnotesize{\color{accentcolor}\faGraduationCap}~\href{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar}
+    \begin{minipage}[t]{147pt}
+    \raggedright\footnotesize
+    \makebox[12pt][c]{\color{accentcolor}\faGithub}~\href{https://github.com/puneetsl}{github.com/puneetsl}\\[1pt]
+    \makebox[12pt][c]{\color{accentcolor}\faLinkedin}~\href{https://www.linkedin.com/in/puneetsl}{linkedin.com/in/puneetsl}\\[1pt]
+    \makebox[12pt][c]{\color{accentcolor}\faKaggle}~\href{https://www.kaggle.com/puneetsl}{kaggle.com/puneetsl}\\[1pt]
+    \makebox[12pt][c]{\color{accentcolor}\faGraduationCap}~\href{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar}
+    \\[1pt]
+    {\color{taglinecolor}\makebox[12pt][c]{\faIdCard}~{\tinyfootnote No sponsorship required (LPR)}}
+    \end{minipage}
 \end{minipage}
 
-\vspace{0mm}
-\noindent\rule{\textwidth}{0.4pt}
-\vspace{-2mm}
+\end{tcolorbox}
 
 % Experience section
-\sectionbox{Experience \hfill \normalsize 13+ years}
+\begin{experiencepanel}{Experience \hfill \normalsize 13+ years}
 \smallersection
 
-\begin{resumeentry}{Machine Learning Engineer (Tech Lead)}{Sep 2021 -- Present}{Zillow (Zestimate)}{Remote}{4Y}
-\end{resumeentry}
+\begin{companybox}{\employer{Zillow (Zestimate)}{Machine Learning Engineer (Tech Lead)}{Sep 2021 -- Present}{Remote}{5Y}}
 
-% Listing IQ - Shipped product, led POC
+% 1. Explainable valuation and image research are distinct projects.
 \begin{projectentry}
-    \projicon{\faChartLine} \textbf{\href{https://grow.zillow.com/listingIQ-comparative-market-analysis}{Listing IQ: Interactive CMA Platform}} \tech{Django, DocumentDB, PyTorch} \approach{Real-time Valuations + Embeddings}
+    \projicon{\faProjectDiagram} \textbf{Next-Gen Zestimate: Explainable Valuation} \tech{PyTorch, Databricks} \approach{Glass-box Modeling}
 \end{projectentry}
-
 \begin{projectdesc}
-    Led \textbf{proof-of-concept and core architecture} for platform now live as Listing IQ CMA: AI-powered tool enabling agents to customize property comparisons with map-based filtering, editable valuations, and amenity-level explanations. Designed APIs integrating real-time Zestimate valuations, property embeddings, and comparative analysis. Mentored junior engineer through production launch.\\[1pt]
-    \impact{POC $\rightarrow$ shipped product powering agent pricing decisions; foundation for new agent revenue products}
+    \pbullet{Led architecture experiments and production evaluation for an explainable valuation model with per-feature dollar contributions; improved accuracy through learned comp weighting and evaluated explanation stability nationally.}%
+    \item[]\impact{Building Zillow's first explainable Zestimate, with per-feature dollar attribution for downstream valuation products.}
+\end{projectdesc}
+\begin{projectentry}
+    \projicon{\faImages} \textbf{Property Condition \& Quality Image Embeddings} \tech{PyTorch, Databricks, CLIP}
+\end{projectentry}
+\begin{projectdesc}
+    \pbullet{Led research and model refinement for CLIP-based property scoring on 1.95M homes: \textbf{${\sim}$70\% five-class accuracy and ${\sim}$0.91 weighted AUC} on held-out validation. Scored 16.5M home--listing combinations in staging.}%
+    \item[]\impact{Scoring pipeline in production; Zestimate integration pending.}
 \end{projectdesc}
 
-% Zestimate Customer Care Agent + Reliability Infrastructure (shipped LLM)
+% 2. Customer Care Agent
 \begin{projectentry}
-    \projicon{\faRobot} \textbf{Zestimate Customer Care Agent + Reliability Infrastructure} \tech{React, LangChain, FastAPI} \approach{RAG Grounding + Output Validation + Deflection KPI}
+    \projicon{\faComments} \textbf{Zestimate Customer Care Agent} \tech{LangChain, FastAPI} \approach{RAG + Custom Judges + Bounded Output}
 \end{projectentry}
-
 \begin{projectdesc}
-    Designed and shipped the \textbf{first LLM assistant deployed to Zillow customer support}: personalized Zestimate explanations grounded in real valuation data. Built \textbf{RAG pipeline that constrains the agent} to answer from actual Zestimate features and values rather than free-form generation; layered \textbf{output validation with schema and range checks} to catch out-of-distribution responses before they reach customers. Deployed with \textbf{deflection rate} tracked as the primary production KPI.\\[1pt]
-    \impact{First LLM tool deployed to Zillow customer care; production-hardened against hallucination via grounding and output validation}
+    \pbullet{Built one of Zillow's first agentic AI tools for customer care, with RAG and real-time services exposing property history, features, and comps across ${\sim}$150M homes.}%
+    \pbullet{Encoded expert triage as agent tools; reduced hallucinations with custom judges, curated context, and bounded responses.}%
+    \pbullet{Answered ${\sim}$50--60\% of questions in internal evaluation. Piloted with care reps reviewing explanations before customer use.}%
 \end{projectdesc}
 
-% Active Listing Comps - Built from ground up
+% 3. Listing IQ
 \begin{projectentry}
-    \projicon{\faDatabase} \textbf{Active Listing Comps Engine} \tech{Apache Spark, Metaflow, H3 Geospatial} \approach{Similarity Scoring + Batch/REST APIs}
+    \projicon{\faHome} \textbf{\href{https://grow.zillow.com/listingIQ-comparative-market-analysis}{Listing IQ: Interactive CMA Platform}} \tech{Django, DocumentDB, H3 Geospatial} \approach{Real-time Comps + Valuation}
 \end{projectentry}
-
 \begin{projectdesc}
-    Architected and built similar listings comparison engine from ground up: batch pipeline and real-time API using \textbf{H3 geospatial indexing} and customizable ranking algorithms. Processes \textbf{3M+ listings}, powers \href{https://grow.zillow.com/showcase}{Zillow Showcase} dashboards (\textbf{8M monthly views}) helping agents demonstrate listing performance vs non-Showcase homes. Led migration to append-only listing data source; built lifecycle management and deduplication layer to track active, sold, and removed listings across markets. \textbf{Production in 5 weeks.} Later led algorithm improvements.\\[1pt]
-    \impact{5 weeks to production; 95\% complaint reduction, coverage 90\%$\rightarrow$98.5\%; metrics cited in sales, marketing, and investor communications}
+    \pbullet{Led two engineers from interactive CMA prototype through handoff to ShowingTime, owning the ML architecture and incorporating seller-agent feedback; productionized the real-time ML services.}%
+    \pbullet{Moved comp selection from batch to real time using geospatial retrieval and ranking. Property edits update comps and valuations immediately; full reports in under 15 seconds.}%
+    \item[]\impact{Shipped as Listing IQ CMA, bringing Zestimate valuation data into a commercial seller-agent product.}
 \end{projectdesc}
 
-% Infrastructure & Engineering Leadership - Combined
+% 4. Active Listing Comps
 \begin{projectentry}
-    \projicon{\faServer} \textbf{Infrastructure \& Engineering Leadership} \tech{Terraform, AWS, Metaflow, Docker}
+    \projicon{\faLayerGroup} \textbf{Active Listing Comps Engine} \tech{Databricks, PySpark, H3 Geospatial} \approach{Similarity Ranking + Batch Pipeline}
 \end{projectentry}
-
 \begin{projectdesc}
-    Built Valuation API from POC to production: FastAPI service handling \textbf{$\sim$6K requests/day with zero P2 alerts} since launch. Led Zestimate 6.6 deprecation (Redis$\rightarrow$hybrid cache feature store for real-time valuations, legacy system shutdown), saving \textbf{\$350K annually}. Drove several Zestimate model point releases to completion; created MR tracking system, led ETL optimizations. Completed CI/CD pipeline modernization across all team services with \textbf{zero production incidents}.\\[1pt]
-    \impact{\$500K+ combined annual savings, 61\% alert reduction (641$\rightarrow$249 YoY)}
+    \pbullet{Architected the daily similarity-ranking pipeline for 3M+ active listings behind Showcase's Listing Performance Dashboard.}%
+    \pbullet{Built deduplication and lifecycle tracking across active, sold, and removed listings to maintain an accurate comp universe.}%
+    \pbullet{Led a data source migration that expanded listing coverage from \textbf{90\% to 98.5\%}.}%
+    \item[]\impact{\textbf{95\% reduction in listing-visibility complaints} following the coverage improvement.}
 \end{projectdesc}
 
-% Multimodal Embeddings & Explainable Valuation (prototypes)
+% 5. Infrastructure
 \begin{projectentry}
-    \projicon{\faBrain} \textbf{Next-Gen Zestimate: Multimodal + NAM + Explainability} \tech{PyTorch, CLIP, Databricks} \approach{DualLossAutoEncoder + NAM + Per-feature Attribution}
+    \projicon{\faServer} \textbf{Infrastructure \& Engineering Leadership} \tech{FastAPI, AWS, Terraform, Databricks, PySpark} \approach{API Gateway + Legacy Migration}
 \end{projectentry}
-
 \begin{projectdesc}
-    Leading Image Embeddings project: experimenting with DualLossAutoEncoder to predict property condition from \textbf{CLIP embeddings (3.3M listings)} for Zestimate integration. Prototyping a \textbf{NAM-based (Neural Additive Models) Zestimate variant} for intrinsic interpretability, alongside a per-feature attribution architecture that exposes dollar-level contributions to downstream AI agents. Led core Zestimate neural network ETL pipeline migration to Databricks; \textbf{identified and resolved 8x latency and 10x cost regression} before production deployment.\\[1pt]
-    \impact{Building multimodal and explainability infrastructure for next-generation valuation products}
+    \pbullet{Built a FastAPI reverse-proxy gateway decoupling downstream applications from model changes; designed for 20--40M req/day, with A/B testing support and a 99.5\% SLA.}%
+    \pbullet{Led legacy valuation retirement and Redis-to-feature-store migration; discovered two undocumented downstream consumers, rolled back, and revised the rollout.}%
+    \pbullet{Led training ETL migration from Metaflow/Kubernetes to Databricks PySpark. Platform-specific optimization reversed an initial 8$\times$ latency and 10$\times$ cost regression, restoring production parity.}%
+    \item[]\impact{\textbf{\$350K annual savings} from decommissioning the legacy valuation stack, including Redis.}
 \end{projectdesc}
 
-% Mentorship & Technical Leadership
+% 6. Mentorship
 \begin{projectentry}
     \projicon{\faUsers} \textbf{Mentorship \& Technical Leadership}
 \end{projectentry}
-
 \begin{projectdesc}
-    Managed summer intern (2023): designed project plan, weekly check-ins, received \textbf{``strongly favorable''} feedback. Mentored \textbf{4+ engineers} across many projects, deployments, and onboardings. Created \textbf{RFC templates, Stacked MR best practices} etc. adopted by the team. Conduct technical interviews, lead code reviews, and coordinate cross-team design discussions.\\[1pt]
+    \item[] Managed a summer intern (2023) and mentored 4+ engineers; authored RFCs and architecture docs adopted as reference patterns outside the team; conducted technical interviews.
 \end{projectdesc}
+\end{companybox}
 
-\begin{resumeentry}{Machine Learning Engineer}{May 2020 -- Sep 2021}{Match Group (OkCupid)}{New York City}{1.5Y}
-\end{resumeentry}
+\begin{companybox}{\employer{Match Group (OkCupid)}{Machine Learning Engineer}{May 2020 -- Sep 2021}{New York City}{1.5Y}}
+\begin{projectentry}
+    \projicon{\faTag} \textbf{Discount Optimization} \tech{Python, Keras, TensorFlow, Weights \& Biases} \approach{\href{https://blog.research.google/2016/06/wide-deep-learning-better-together-with.html}{Wide\&Deep} + Uncertainty Estimation}
+\end{projectentry}
+\begin{projectdesc}
+    \pbullet{Owned the subscription discount optimization pipeline: feature engineering under PII constraints, model training, A/B testing, deployment, and production monitoring.}%
+    \pbullet{Diagnosed epistemic uncertainty across random seeds and built a 100-model ensemble to stabilize discount recommendations across retraining runs.}%
+    \item[]\impact{\textbf{6\% revenue increase} vs.\ baseline in A/B testing.}
+\end{projectdesc}
+\end{companybox}
+
+
+\end{experiencepanel}
+\newpage
+\begin{experiencepanel}{Experience \hfill {\fontsize{9}{11}\selectfont Continued}}
+\begin{companybox}{\employer{FactSet}{Machine Learning Engineer}{Apr 2015 -- May 2020}{New York City}{5Y}}
 
 \begin{projectentry}
-    \projicon{\faSort} \textbf{Discount Optimization} \tech{Python, Keras, TensorFlow, Weights and Biases} \approach{\href{https://blog.research.google/2016/06/wide-deep-learning-better-together-with.html}{Wide\&Deep}}
+    \projicon{\faIcon{file-alt}} \textbf{ML-Powered Financial Data Extraction} \tech{Python, TensorFlow, Keras, SageMaker} \approach{CNN, ELMo, BiLSTM}
 \end{projectentry}
-
 \begin{projectdesc}
-    Owned \textbf{end-to-end ML pipeline} for subscription discount optimization: feature engineering, model training, A/B testing, deployment, and production monitoring. Discovered high prediction variance across model runs; designed \textbf{ensemble uncertainty estimation using 100-model bagging} to quantify and stabilize outputs for production deployment.\\[1pt]
-    \impact{6\% overall revenue increase through A/B tested pricing models}
+    \pbullet{Led development of a speaker identification system for earnings calls using spectrogram-based CNNs.}%
+    \pbullet{Built private company fact extraction pipeline across 1.6M websites using ELMo/BiLSTM; rewrote the language identification service.}%
+    \pbullet{Led machine translation infrastructure for financial content (Polish SMT achieving BLEU 69.10).}%
+    \item[]\impact{20\% reduction in annotation time in a limited production rollout of earnings-call speaker identification} [\href{https://drive.google.com/file/d/1nF485POZoE2YsYuQHdvUHO1GbwkQUDfL/view}{\faFile}]
 \end{projectdesc}
 
-\needspace{6\baselineskip}
-\begin{resumeentry}{ML Engineer $\rightarrow$ Senior ML Engineer}{Apr 2015 -- May 2020}{FactSet}{New York City}{5Y}
-\end{resumeentry}
-
-% Combining NLP/ML projects for financial data extraction
-\begin{projectentry}
-    \projicon{\faMicrophone} \textbf{ML-Powered Financial Data Extraction} \tech{Python, TensorFlow, Keras, Sagemaker} \approach{CNN, ELMo, BiLSTM}
-\end{projectentry}
-
-\begin{projectdesc}
-    Led multiple ML initiatives: (1) \textbf{Speaker identification} system for earnings calls using spectrograms and CNNs, (2) Private company fact extraction from \textbf{1.6M websites} using ELMo/BiLSTM. Rewrote MLangID language identification service. Led machine translation infrastructure (Polish SMT achieving \textbf{BLEU 69.10}).\\[1pt]
-    \impact{20\% reduction in human-hours for earnings call processing, automated extraction from millions of documents} [\href{https://drive.google.com/file/d/1nF485POZoE2YsYuQHdvUHO1GbwkQUDfL/view}{\faFile}]
-\end{projectdesc}
-
-% Combining search-related projects
 \begin{projectentry}
     \projicon{\faSearch} \textbf{Financial Document Search \& Ranking Systems} \tech{Apache Spark, Java, Python} \approach{Distributed Trie, N-gram LM, Vector Space}
 \end{projectentry}
-
 \begin{projectdesc}
-    Led \textbf{team of 3 engineers} on Document Screening: built autosuggestion and concept similarity systems. Created FingerPrinter deduplication service (\textbf{10$\times$ response improvement: 1000ms$\rightarrow$100ms}). Architected Formula Lookup using distributed trie and n-gram language models on Spark.\\[1pt]
-    \impact{Improved formula ranking from 5.6 to 2.3, 66\% faster document processing, powered StreetAccount trending news}
+    \pbullet{Led team of 3 engineers on Document Screening: built autosuggestion and concept similarity systems.}%
+    \pbullet{Built the FingerPrinter deduplication service, reducing response time from 1000ms to 100ms (10$\times$).}%
+    \pbullet{Architected Formula Lookup using distributed trie and n-gram language models on Spark.}%
+    \item[]\impact{Formula ranking improved from 5.6 to 2.3; document processing was 66\% faster. Systems supported StreetAccount trending news.}
 \end{projectdesc}
+\end{companybox}
 
-% FactSet Technical Leadership
+\begin{companybox}{\employer{\href{https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre}{Tata Research Development and Design Centre}}{ML Research Engineer}{Jul 2011 -- Jul 2013}{India}{2Y}}
 \begin{projectentry}
-    \projicon{\faUsers} \textbf{Technical Leadership}
+    \projicon{\faChartLine} \textbf{Event Detection in Time Series} \tech{Java, Python, RapidMiner} \approach{SVM-RBF} \href{http://arxiv.org/pdf/1408.3733v1.pdf}{\faFilePdf}
 \end{projectentry}
-
 \begin{projectdesc}
-    Established engineering best practices: Jenkins CI, comprehensive test suites, documentation standards. Mentored new hires and junior engineers. FingerPrinter became the model Java project within the ML group.\\[1pt]
-\end{projectdesc}
-
-\begin{resumeentry}{ML Research Engineer}{Jul 2011 -- Jul 2013}{\href{https://en.wikipedia.org/wiki/Tata_Research_Development_and_Design_Centre}{Tata Research Development and Design Centre}}{India}{2Y}
-\end{resumeentry}
-
-\begin{projectentry}
-    \projicon{\faChartLine} \textbf{Event Detection in Time Series} \tech{Java, Python, RapidMiner} \approach{SVM - RBF} \href{http://arxiv.org/pdf/1408.3733v1.pdf}{\faFilePdf}
-\end{projectentry}
-
-\begin{projectdesc}
-    Wrote an algorithm based on Shape Context for finding frequently occurring patterns and events, with as good results as SAX, DTW etc. with \textbf{7\%} better results in the particular domain of car sensors.
+    \pbullet{Wrote a Shape Context-based algorithm for detecting recurring patterns in time series; matched SAX/DTW accuracy on general benchmarks and outperformed by 7\% in the car sensor domain.}
 \end{projectdesc}
 
 \begin{projectentry}
-    \projicon{\faDatabase} \textbf{\href{https://ieeexplore.ieee.org/abstract/document/6597127}{Data Harmonization Framework (DHF)}} \tech{Java, Apache Pig}
+    \projicon{\faIcon{exchange-alt}} \textbf{\href{https://ieeexplore.ieee.org/abstract/document/6597127}{Data Harmonization Framework (DHF)}} \tech{Java, Apache Pig}
 \end{projectentry}
-
 \begin{projectdesc}
-    Implemented an ETL framework that exploits the power of map-reduce and big-databases to fuse incongruous enterprise data from disparate sources in near real time.
+    \pbullet{Built a MapReduce ETL framework that combines enterprise data from multiple sources in near real time. Published at IEEE INDIN 2013.}
 \end{projectdesc}
+\end{companybox}
 
-\normalsizesection
+\end{experiencepanel}
 
-\vspace{30pt} % Add vertical space to push Skills section to next page
-
-% Skills section
-\sectionbox{Skills}
+\begin{sectioncard}{Skills}
 \smallersection
-
-\begingroup
 \setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.2}
+\renewcommand{\arraystretch}{1.25}
 \newcommand{\skilllabel}[1]{\textbf{\color{accentcolor}#1}}
-\begin{tabularx}{\textwidth}{@{} l X @{}}
-\skilllabel{Languages} & Python $\cdot$ Java $\cdot$ C/C++ $\cdot$ Bash $\cdot$ SQL \\
-\skilllabel{LLM \& GenAI} & LangChain $\cdot$ RAG $\cdot$ LLM Guardrails $\cdot$ Embeddings $\cdot$ Vector DBs (Pinecone) $\cdot$ CLIP \\
-\skilllabel{Classical ML} & PyTorch $\cdot$ TensorFlow $\cdot$ A/B Testing $\cdot$ Uncertainty Estimation $\cdot$ Model Monitoring \\
-\skilllabel{Data \& Infra} & PySpark $\cdot$ Databricks $\cdot$ MLflow $\cdot$ Metaflow $\cdot$ FastAPI $\cdot$ Django $\cdot$ Docker $\cdot$ Kubernetes $\cdot$ Terraform \\
-\skilllabel{Cloud \& CI/CD} & AWS (S3, EC2, SageMaker) $\cdot$ GitLab CI $\cdot$ Weights \& Biases \\
-\skilllabel{Leadership} & System Design $\cdot$ Technical Interviews $\cdot$ Mentoring $\cdot$ RFC Authorship $\cdot$ Cross-team Coordination \\
+\begin{tabularx}{\linewidth}{@{} l >{\raggedright\arraybackslash}X @{}}
+\skilllabel{Languages} & \textbf{Python} $\cdot$ SQL $\cdot$ Java $\cdot$ C/C++ $\cdot$ Bash \\
+\skilllabel{Modeling \& Evaluation} & \textbf{PyTorch} $\cdot$ TensorFlow $\cdot$ A/B Testing $\cdot$ Uncertainty Estimation \\
+\skilllabel{LLM \& GenAI} & RAG $\cdot$ LangChain $\cdot$ LLM Guardrails $\cdot$ Embeddings $\cdot$ CLIP $\cdot$ Vector DBs (Pinecone) \\
+\skilllabel{Data \& ML Pipelines} & \textbf{PySpark} $\cdot$ \textbf{Databricks} $\cdot$ MLflow $\cdot$ Metaflow $\cdot$ Weights \& Biases \\
+\skilllabel{Backend \& Deployment} & \textbf{FastAPI} $\cdot$ Django $\cdot$ Docker $\cdot$ Kubernetes $\cdot$ Terraform \\
+\skilllabel{Cloud \& CI/CD} & AWS (S3, EC2, SageMaker) $\cdot$ GitLab CI \\
 \end{tabularx}
-\endgroup
+\end{sectioncard}
 
-\normalsizesection
-
-% Publications section
-\sectionbox{Publications \hfill \normalsize\iconlink{\faGraduationCap}{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar profile}}
-\tinyfootnote % Custom size between footnotesize and scriptsize
-
-\noindent\textbf{\href{http://dl.acm.org/citation.cfm?id=2806657}{Inferring Latent Attributes of an Indian Twitter user using Celebrities and Class Influencers}} \hfill \href{https://www.youtube.com/watch?v=9BtWs3Rn2Ng}{\faYoutube} ACM Hypertext 2015
-
-\vspace{-1pt}
-\noindent\textbf{\href{http://arxiv.org/abs/1405.6667}{Inferring gender of a Twitter user using celebrities it follows}} \hfill CORR 2014
-
-\vspace{-1pt}
-\noindent\textbf{\href{http://arxiv.org/abs/1206.2484}{Architecture for Automated Tagging and Clustering of Song Files According to Mood}} \hfill IJCSI, 2010
-
-\normalsizesection
-
-% Education section
-\sectionbox{Education}
+\begin{sectioncard}{Education}
 \smallersection
-
-\noindent\textbf{Master of Science} in Computer Science, State University of New York, Buffalo, NY \hfill 2014
-
-\vspace{-1pt}
+\noindent\textbf{Master of Science} in Computer Science, State University of New York, Buffalo, NY \hfill 2014\\[5pt]
 \noindent\textbf{B. Tech.} in Computer Science and Engineering, JIIT, India \hfill 2010
+\end{sectioncard}
 
-\normalsizesection
+\begin{sectioncard}{Publications \hfill \normalsize\iconlink{\faGraduationCap}{https://scholar.google.com/citations?user=NrYKcaMAAAAJ\&hl=en}{Google Scholar profile}}
+\tinyfootnote
+\noindent\textbf{\href{http://dl.acm.org/citation.cfm?id=2806657}{Inferring Latent Attributes of an Indian Twitter user using Celebrities and Class Influencers}} \hfill \href{https://www.youtube.com/watch?v=9BtWs3Rn2Ng}{\faYoutube} ACM Hypertext 2015\\[3pt]
+\noindent\textbf{\href{http://arxiv.org/abs/1405.6667}{Inferring gender of a Twitter user using celebrities it follows}} \hfill CORR 2014\\[3pt]
+\noindent\textbf{\href{http://arxiv.org/abs/1206.2484}{Architecture for Automated Tagging and Clustering of Song Files According to Mood}} \hfill IJCSI, 2010
+\end{sectioncard}
 
-% Personal Projects section
-\sectionbox{Open Source \& Community}
+\begin{sectioncard}{Open Source \& Community}
 \footnotesize
-
-\begingroup
 \setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.1}
-\begin{tabularx}{\textwidth}{@{} p{4.5cm} >{\raggedright\arraybackslash}X @{}}
-\textbf{\iconlink{\faUsers}{https://sites.google.com/view/w-mufin/organizers}{Organizer @ MUFin}} & Program committee member, paper reviewer at top ML conferences: Workshop on Modeling Uncertainty in the Financial Sector \textit{(AAAI 2023, ECML-PKDD 2022)} \\[2pt]
-\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/lotion}{Lotion}} & Unofficial Notion.so Desktop app for Linux \textit{(2K+ GitHub stars / 60K+ Clones \& Downloads)} \\[2pt]
-\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/Romadeva}{Romadeva}} & Tool to convert Roman script to Indic(Devanagari) script \textit{(Used by \href{https://translatorswithoutborders.org}{Translators Without Borders})} \\[2pt]
-\textbf{\iconlink{\faQuestionCircle}{https://www.facebook.com/photo.php?fbid=10153613108040010\&set=a.10153613186550010\&type=3\&theater}{Quena}} & Question and Answering system – Indexed 1.6 Million Wikipedia documents, designed a question parser and a ranking algorithm based on popularity. \textit{(Apache Solr, NER, POS tagger)}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{} p{3.3cm} >{\raggedright\arraybackslash}X @{}}
+\textbf{\iconlink{\faUsers}{https://sites.google.com/view/w-mufin/organizers}{Organizer @ MUFin}} & Program committee and paper reviewer, Modeling Uncertainty in the Financial Sector \textit{(AAAI 2023, ECML-PKDD 2022)} \\
+\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/lotion}{Lotion}} & Unofficial Notion.so Desktop app for Linux \textit{(2K+ GitHub stars / 60K+ Clones \& Downloads)} \\
+\textbf{\iconlink{\faGithub}{https://github.com/puneetsl/Romadeva}{Romadeva}} & Roman-to-Devanagari transliteration \textit{(Used by \href{https://translatorswithoutborders.org}{Translators Without Borders})} \\
+\textbf{\iconlink{\faQuestionCircle}{https://www.facebook.com/photo.php?fbid=10153613108040010\&set=a.10153613186550010\&type=3\&theater}{Quena}} & Question-answering over 1.6M Wikipedia documents; query parsing and popularity-based ranking. \textit{(Apache Solr, NER, POS tagger)}
 \end{tabularx}
-\endgroup
-
-\normalsizesection
+\end{sectioncard}
 
 \end{document}
